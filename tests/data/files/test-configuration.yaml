@@ -1,0 +1,16 @@
+configuration:
+    # string
+    key_1: value_1
+
+    # array
+    key_2: 
+        - value_2_1
+        - value_2_2
+        - value_2_3
+        - value_2_4
+
+    # boolean
+    key_3: true
+
+    # int
+    key_4: 49
