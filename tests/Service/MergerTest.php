@@ -86,6 +86,9 @@ class MergerTest extends TestCase
         $this->assertSame(['A', 'B', 'C'], $mergedConfig->get('append_2'));
         $this->assertSame(false, $mergedConfig->get('overwrite_1'));
         $this->assertSame('3', $mergedConfig->get('overwrite_all'));
+        
+        // Check if merged config is new object
+        $this->assertFalse($base === $mergedConfig);
     }
 
 }
