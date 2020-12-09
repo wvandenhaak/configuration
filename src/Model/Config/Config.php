@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace IceCake\AppConfigurator\Model;
+namespace IceCake\AppConfigurator\Model\Config;
 
 /**
  * The config is an object which holds multiple key-value pairs

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Test\Service;
 
 use IceCake\AppConfigurator\Exception\ParseException;
-use IceCake\AppConfigurator\Model\Config;
+use IceCake\AppConfigurator\Model\Config\Config;
 use IceCake\AppConfigurator\Service\Parser;
 use PHPUnit\Framework\TestCase;
 
