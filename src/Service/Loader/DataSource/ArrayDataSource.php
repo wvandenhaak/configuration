@@ -15,14 +15,15 @@ use IceCake\AppConfigurator\Exception\LoadingException;
  */
 class ArrayDataSource implements DataSourceInterface
 {
+    
+    private string $filename;
 
     /**
      * @param string $filename
      */
-    public function __construct(
-        private string $filename
-    )
+    public function __construct(string $filename)
     {
+        $this->filename = $filename;
     }
 
     /**

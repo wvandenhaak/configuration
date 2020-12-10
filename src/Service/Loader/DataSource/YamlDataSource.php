@@ -17,13 +17,14 @@ use Symfony\Component\Yaml\Exception\ParseException;
 class YamlDataSource implements DataSourceInterface
 {
 
+    private string $filename;
+
     /**
      * @param string $filename
      */
-    public function __construct(
-        private string $filename
-    )
+    public function __construct(string $filename)
     {
+        $this->filename = $filename;
     }
 
     /**
@@ -33,7 +34,7 @@ class YamlDataSource implements DataSourceInterface
     public function validate(): void
     {
         $message = null;
-        
+
         if (!is_file($this->filename)) {
             $message = sprintf(
                     'File "%s" does not exist.',
@@ -49,7 +50,7 @@ class YamlDataSource implements DataSourceInterface
         }
 
         // @todo more checks before requiring?
-        
+
         if ($message) {
             throw new LoadingException($message);
         }

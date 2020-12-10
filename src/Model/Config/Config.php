@@ -12,12 +12,13 @@ namespace IceCake\AppConfigurator\Model\Config;
 class Config
 {
 
+    private array $elements;
+    
     /**
      * @param array $elements
      */
-    public function __construct(
-        private array $elements = []
-    ) { 
+    public function __construct(array $elements = []) { 
+        $this->elements = $elements;
     }
 
     /**
