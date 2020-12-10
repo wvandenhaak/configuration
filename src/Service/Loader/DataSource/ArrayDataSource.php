@@ -57,6 +57,7 @@ class ArrayDataSource implements DataSourceInterface
 
     /**
      * @return array
+     * @throws LoadingException 
      */
     public function load(): array
     {

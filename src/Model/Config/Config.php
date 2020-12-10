@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Model\Config;
 
@@ -13,11 +13,12 @@ class Config
 {
 
     private array $elements;
-    
+
     /**
      * @param array $elements
      */
-    public function __construct(array $elements = []) { 
+    public function __construct(array $elements = [])
+    {
         $this->elements = $elements;
     }
 
@@ -29,7 +30,7 @@ class Config
     {
         return $this->elements[$key] ?? null;
     }
-    
+
     /**
      * @return array
      */

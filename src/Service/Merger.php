@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace IceCake\AppConfigurator\Service;
 
 use IceCake\AppConfigurator\Model\Config\Config;

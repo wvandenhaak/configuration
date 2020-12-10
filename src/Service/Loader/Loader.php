@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Service\Loader;
 
 use IceCake\AppConfigurator\Contract\DataSourceInterface;
-use IceCake\AppConfigurator\Exception\LoadingException;
 
 /**
- * Description of YamlLoader
+ * Description of Loader
  *
  * @author Wesley van den haak
  */
