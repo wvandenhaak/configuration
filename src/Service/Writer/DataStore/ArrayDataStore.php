@@ -47,7 +47,7 @@ class ArrayDataStore implements DataStoreInterface
         $configData = $this->config->getAll();
         $data = [DataStoreInterface::CONFIG_KEY => $configData];
         
-        $fileContents = "<?php\nreturn " . var_export($data, true) . "\n?>";
+        $fileContents = "<?php\n\nreturn " . var_export($data, true) . "\n\n?>";
         
         // Write file
         $handle = fopen($fullFileName, 'w+');
