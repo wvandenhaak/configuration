@@ -1,6 +1,6 @@
 <?php
 
-namespace IceCake\AppConfigurator\Contract\Loader;
+namespace IceCake\AppConfigurator\Contract;
 
 /**
  *
