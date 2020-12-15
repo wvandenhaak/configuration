@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Common\Value;
+namespace IceCake\AppConfigurator\Test\Common\Value\File;
 
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\Value\FileNameValue;
+use IceCake\AppConfigurator\Common\Value\FIle\FileNameValue;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -81,7 +81,8 @@ class FileNameValueTest extends TestCase
             ['simple_name', 'js', 'simple_name.js'],
             ['script', '.php', 'script.php'],
             ['script.html', 'php', 'script.php'],
-            ['/folder1/folder2/script.php', 'php', 'script.php']
+            ['/folder1/folder2/script.php', 'php', 'script.php'],   // Fullpath stripping
+            [' script ', ' php ', 'script.php']                     // Whitespace stripping
         ];
     }
 }
