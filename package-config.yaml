@@ -1,38 +1,43 @@
-settings:
-    
-options:
-    # Category (or group)
-    chapter 1:
-        # Available options in category
+options: 
+    # string
+    - {
+        key: 'key_1',
+        value: 'value_1',
+        type: 'path_to_class',
+        default: null
+    }
+
+    # array
+    - {
+        key: 'key_2',
+        value: [value_2_1, value_2_2, value_2_3, value_2_4],
+        type: 'path_to_class',
+        default: null
+    }
+
+    # boolean
+    - {
+        key: 'key_3',
+        value: false,
+        type: 'path_to_class',
+        default: null
+    }
+
+    # int
+    - {
+        key: 'key_4',
+        value: 12345,
+        type: 'path_to_class',
+        default: null
+    }
+
+groups:
+    name: Group 1
+    keys: 
+        - key_1
+        - key_2
         
-        # string
-        key_1: value_1
-        
-        # array
-        key_2: 
-            - value_2_1
-            - value_2_2
-            - value_2_3
-            - value_2_4
-        
-        # boolean
-        key_3: true
-        
-        # int
-        key_4: 49
-    chapter 12:
-        # string
-        key_1: value_1
-        
-        # array
-        key_2: 
-            - value_2_1
-            - value_2_2
-            - value_2_3
-            - value_2_4
-        
-        # boolean
-        key_3: true
-        
-        # int
-        key_4: 49
+    name: Group 2
+    keys: 
+        - key_1
+        - key_2
