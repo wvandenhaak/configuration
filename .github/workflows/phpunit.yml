@@ -1,4 +1,4 @@
-name: Install and Test (with Composer and PHPunit)
+name: PHPUnit
 
 on:
   push:
