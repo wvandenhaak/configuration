@@ -70,7 +70,7 @@ echo($eind - $start . ' sec');
 // GET AND PARSE FULL CONFIG
 
 $setupLoader = new SetupLoader();
-$setup = $setupLoader->load($projectRootFolder . '/package-config.yaml');
+$setup = $setupLoader->load('package-config.yaml');
 
 // Dump PEAK USAGE IN MB's
 
