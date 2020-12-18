@@ -1,0 +1,15 @@
+configuration:
+    # string
+    key_11: value_1
+
+    # array
+    key_22: ['value_2_1', 'value_2_2', 'value_2_3', 'value_2_4']
+
+    # boolean
+    key_33: true
+
+    # int
+    key_44: 49
+    
+    
+    duplicate_key_for_merging: 'DEF'
