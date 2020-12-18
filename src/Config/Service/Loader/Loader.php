@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Config\Service\Loader;
 
-use IceCake\AppConfigurator\Config\Contract\DataSourceInterface;
+use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
 
 /**
  * Description of Loader
