@@ -55,8 +55,8 @@ class ArrayDataStoreTest extends TestCase
                 ->method('getAll')
                 ->willReturn([]);
 
-        $dataStore = new ArrayDataStore($config, $this->filename);
-        $dataStore->save($this->folder);
+        $dataStore = new ArrayDataStore($this->folder, $this->filename);
+        $dataStore->save($config);
 
         $this->assertFileExists($this->fullPath);
     }

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Config\Service\Writer\DataStore;
 
-use Exception;
-use IceCake\AppConfigurator\Config\Contract\DataStoreInterface;
+use IceCake\AppConfigurator\Common\Contract\DataStoreInterface;
 use IceCake\AppConfigurator\Config\Exception\WriteException;
 use IceCake\AppConfigurator\Config\Model\Config;
 
@@ -17,42 +16,40 @@ use IceCake\AppConfigurator\Config\Model\Config;
 class ArrayDataStore implements DataStoreInterface
 {
 
-    private Config $config;
+    private string $folderPath;
     private string $filename;
 
     /**
-     * @param Config $config
+     * @param string $folderPath
      * @param string $filename
      */
     public function __construct(
-        Config $config,
+        string $folderPath,
         string $filename
     )
     {
-        $this->config = $config;
+        $this->folderPath = $folderPath;
         $this->filename = $filename;
     }
 
     /**
-     * @param string $folderPath
+     * @param Config $config
      * @return void
      */
-    public function save(string $folderPath): void
+    public function save(Config $config): void
     {
 
-        $fullFileName = $folderPath . DIRECTORY_SEPARATOR . $this->filename;
+        $fullFileName = $this->folderPath . DIRECTORY_SEPARATOR . $this->filename;
         // @todo check double or missing directory separators?
         
         // Create file contents
-        $configData = $this->config->getAll();
+        $configData = $config->getAll();
         $data = [DataStoreInterface::CONFIG_KEY => $configData];
         
         $fileContents = "<?php\n\nreturn " . var_export($data, true) . "\n\n?>";
         
         // Write file
-        $handle = fopen($fullFileName, 'w+');
-        fwrite($handle, $fileContents);
-        fclose($handle);
+        file_put_contents($fullFileName, $fileContents);
     }
 
 }

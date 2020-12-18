@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Contract;
+namespace IceCake\AppConfigurator\Common\Contract;
 
 use IceCake\AppConfigurator\Config\Model\Config;
 
@@ -14,8 +14,6 @@ interface DataStoreInterface
 {
     
     public const CONFIG_KEY = 'configuration';
-    
-    public function __construct(Config $config, string $filename);
 
-    public function save(string $folderPath): void;
+    public function save(Config $config): void;
 }

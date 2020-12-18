@@ -6,6 +6,7 @@ namespace IceCake\AppConfigurator\Test\Config\Service\Writer;
 
 use Exception;
 use IceCake\AppConfigurator\Config\Exception\WriteException;
+use IceCake\AppConfigurator\Config\Model\Config;
 use IceCake\AppConfigurator\Config\Service\Writer\{
     DataStore\ArrayDataStore,
     Writer
@@ -20,17 +21,16 @@ use PHPUnit\Framework\TestCase;
 class WriterTest extends TestCase
 {
 
-    private string $folder;
     private Writer $subject;
-    
+    private Config $config;
+
     /**
      * @return void
      */
     public function setUp(): void
     {
-        $this->folder = 'fake/directory';
-
-        $this->subject = new Writer($this->folder);
+        $this->subject = new Writer();
+        $this->config = $this->createMock(Config::class);
     }
 
     /**
@@ -39,17 +39,16 @@ class WriterTest extends TestCase
      */
     public function testCanWrite(): void
     {
-        
+
         $dataStore = $this->getMockBuilder(ArrayDataStore::class)
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $dataStore->expects($this->once())
                 ->method('save')
-                ->with($this->equalTo($this->folder));
-        
-        $this->subject->save($dataStore);
-        
+                ->with($this->equalTo($this->config));
+
+        $this->subject->save($this->config, $dataStore);
     }
 
     /**
@@ -59,16 +58,17 @@ class WriterTest extends TestCase
     public function testWillThrowWriteException(): void
     {
         $this->expectException(WriteException::class);
-        
+
         $dataStore = $this->getMockBuilder(ArrayDataStore::class)
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $dataStore->expects($this->once())
                 ->method('save')
-                ->with($this->equalTo($this->folder))
+                ->with($this->equalTo($this->config))
                 ->willThrowException(new Exception());
-        
-        $this->subject->save($dataStore);
+
+        $this->subject->save($this->config, $dataStore);
     }
+
 }

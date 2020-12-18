@@ -55,8 +55,8 @@ class YamlDataStoreTest extends TestCase
                 ->method('getAll')
                 ->willReturn([]);
 
-        $dataStore = new YamlDataStore($config, $this->filename);
-        $dataStore->save($this->folder);
+        $dataStore = new YamlDataStore($this->folder, $this->filename);
+        $dataStore->save($config);
 
         $this->assertFileExists($this->fullPath);
     }
