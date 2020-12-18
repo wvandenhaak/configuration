@@ -22,6 +22,6 @@
         "phpunit/phpunit": "^9"
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-html coverage/ --whitelist src/ tests"
+        "test": "./vendor/bin/phpunit"
     }
 }
