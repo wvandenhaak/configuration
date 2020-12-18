@@ -8,7 +8,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Traversable;
-use IceCake\AppConfigurator\Model\Setup\Option;
+use IceCake\AppConfigurator\Setup\Model\Option\Option;
 
 /**
  * A collection of multiple Option objects
