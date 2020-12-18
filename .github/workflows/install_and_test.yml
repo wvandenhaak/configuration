@@ -1,4 +1,4 @@
-name: Package install and test with Composer and PHPunit
+name: Install and Test (with Composer and PHPunit)
 
 on:
   push:
