@@ -13,22 +13,34 @@ use IceCake\AppConfigurator\Common\Contract\OptionTypeInterface;
  */
 class BooleanType implements OptionTypeInterface
 {
-    
+
     private bool $value;
-    
+
     /**
      * @param bool $value
      */
     public function __construct(bool $value)
     {
-        $this->value = $value;
+        $this->setValue($value);
     }
-    
+
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getValue(): mixed
+    public function getValue(): bool
     {
         return $this->value;
     }
+
+    /**
+     * @param bool $value
+     * @return void
+     */
+    private function setValue(bool $value): void
+    {
+        // @todo Add checks?
+
+        $this->value = $value;
+    }
+
 }

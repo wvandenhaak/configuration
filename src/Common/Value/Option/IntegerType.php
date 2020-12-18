@@ -21,14 +21,26 @@ class IntegerType implements OptionTypeInterface
      */
     public function __construct(int $value)
     {
-        $this->value = $value;
+        $this->setValue($value);
     }
     
     /**
-     * @return mixed
+     * @return int
      */
-    public function getValue(): mixed
+    public function getValue(): int
     {
         return $this->value;
     }
+
+    /**
+     * @param int $value
+     * @return void
+     */
+    private function setValue(int $value): void
+    {
+        // @todo Add checks?
+
+        $this->value = $value;
+    }
+
 }

@@ -11,5 +11,5 @@ namespace IceCake\AppConfigurator\Common\Contract;
 interface OptionTypeInterface
 {
 
-    public function getValue(): mixed;
+    public function getValue();
 }

@@ -13,22 +13,34 @@ use IceCake\AppConfigurator\Common\Contract\OptionTypeInterface;
  */
 class ArrayType implements OptionTypeInterface
 {
-    
+
     private array $value;
-    
+
     /**
      * @param array $value
      */
     public function __construct(array $value)
     {
-        $this->value = $value;
+        $this->setValue($value);
     }
-    
+
     /**
-     * @return mixed
+     * @return array
      */
-    public function getValue(): mixed
+    public function getValue(): array
     {
         return $this->value;
     }
+
+    /**
+     * @param array $value
+     * @return void
+     */
+    private function setValue(array $value): void
+    {
+        // @todo Add checks?
+
+        $this->value = $value;
+    }
+
 }
