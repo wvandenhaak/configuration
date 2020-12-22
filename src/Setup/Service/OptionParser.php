@@ -26,9 +26,10 @@ class OptionParser
 
         // Parse each option
         foreach ($options as $optionSettings) {
-            $collection->append(
-                $this->parseOption($optionSettings)
-            );
+            $this->validateOption($optionSettings);
+
+            $option = $this->parseOption($optionSettings);
+            $collection->append($option);
         }
 
         return $collection;
@@ -40,8 +41,6 @@ class OptionParser
      */
     private function parseOption(array $option): Option
     {
-        $this->validateOption($option);
-
         // Create new object based on given type and inject value
         $typeClassname = $option['type'];
         $value = new $typeClassname($option['value']);
@@ -69,14 +68,17 @@ class OptionParser
      */
     private function validateOption(array $option): void
     {
-
         // Check if option has a value key and the contents are not empty.
         if (empty($option['key'])) {
-            throw new InvalidArgumentException("Option missing required key property.");
+            throw new InvalidArgumentException("Option missing required 'key' property.");
         }
 
         // Check if an valid option type class is given
-        if (empty($option['type']) || class_exists($option['type']) === false) {
+        if (empty($option['type'])) {
+            throw new InvalidArgumentException("Option missing required 'type' property.");
+        }
+
+        if(class_exists($option['type']) === false) {
             $message = sprintf(
                 "Option type class %s does not exist.",
                 $option['type']
