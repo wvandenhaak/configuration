@@ -87,10 +87,14 @@ class GroupParser
     private function validateGroup(array $group): void
     {
         if (empty($group['name'])) {
-            throw new InvalidArgumentException('Name of the group is required.');
+            throw new InvalidArgumentException("Group missing required 'name' key.");
         }
 
-        if (isset($group['keys']) === false || is_array($group['keys']) === false) {
+        if (empty($group['keys'])) {
+            throw new InvalidArgumentException("Group missing required 'keys' key.");
+        }
+
+        if (is_array($group['keys']) === false) {
             $message = sprintf(
                 "Group '%s' is missing an array of keys.",
                 $group['name']
