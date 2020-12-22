@@ -55,7 +55,7 @@ class Option
      */
     public function getDefaultValue(): mixed
     {
-        // Return NULL of value from object
+        // Return NULL or value from object
         return $this->default?->getValue();
     }
 
