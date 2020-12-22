@@ -10,7 +10,7 @@ use IceCake\AppConfigurator\Config\Exception\WriteException;
 use IceCake\AppConfigurator\Config\Model\Config;
 
 /**
- * Description of Writere
+ * Description of Writer
  *
  * @author Wesley van den haak
  */

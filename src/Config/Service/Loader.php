@@ -22,12 +22,9 @@ class Loader
     {
         
         $dataSource->validate();
-        
-        $data = $dataSource->load();
 
-        // @todo convert values
-
-        return $data;
+        // @todo convert values so we avoid returning arrays
+        return $dataSource->load();
     }
 
 }

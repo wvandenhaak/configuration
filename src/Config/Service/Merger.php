@@ -16,10 +16,10 @@ class Merger
 
     /**
      * Merge one or more configs into a single new config.
-     * The values from the base config will be overwriten if there are corresponding keys
-     * 
+     * The values from the base config will be overwritten if there are corresponding keys
+     *
      * @param Config $base
-     * @param Config $configs
+     * @param Config ...$configs
      * @return Config
      */
     public function merge(
@@ -29,7 +29,7 @@ class Merger
     {
         $data = $base->getAll();
 
-        // Get arguments and remove first one (this is de base)
+        // Get arguments and remove first one (this is $base)
         $args = func_get_args();
         unset($args[0]);
         
@@ -40,8 +40,7 @@ class Merger
             $data = array_merge($data, $appendedConfigData);
         }
 
-        $config = new Config($data);
-        return $config;
+        return new Config($data);
     }
 
 }
