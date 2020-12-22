@@ -68,10 +68,14 @@ class LoaderTest extends TestCase
     /**
      * Test if the loader throws InvalidArgumentException(s) upon receiving invalid data
      * @dataProvider dataProviderInvalidSetupContents
-     *
+     * @param array $data
+     * @param string $message
      * @return void
      */
-    public function testThrowingInvalidArgumentExceptions(array $data, string $message): void
+    public function testThrowingInvalidArgumentExceptions(
+        array $data,
+        string $message
+    ): void
     {
         $this->expectException(InvalidArgumentException::class);
 
