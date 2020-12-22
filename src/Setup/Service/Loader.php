@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Setup\Service;
 
+use InvalidArgumentException;
 use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
 use IceCake\AppConfigurator\Setup\Model\Setup;
 use IceCake\AppConfigurator\Setup\Service\GroupParser;
@@ -16,6 +17,8 @@ use IceCake\AppConfigurator\Setup\Service\OptionParser;
  */
 class Loader
 {
+    private const SETUP_KEY_OPTIONS = 'options';
+    private const SETUP_KEY_GROUPS = 'groups';
 
     private GroupParser $groupParser;
     private OptionParser $optionParser;
@@ -41,13 +44,72 @@ class Loader
     {
         // Load
         $dataSource->validate();
-        $setupArray = $dataSource->load();
+        $setup = $dataSource->load();
 
-        // @todo validate $setupArray
+        // Validate
+        $this->validate($setup);
 
-        $options = $this->optionParser->parse($setupArray['options']);
-        $groups = $this->groupParser->parse($options, $setupArray['groups']);
+        // Parsing
+        $options = $this->optionParser->parse($setup[self::SETUP_KEY_OPTIONS]);
+        $groups = $this->groupParser->parse($options, $setup[self::SETUP_KEY_GROUPS]);
 
         return new Setup($options, $groups);
+    }
+
+    /**
+     * @param array $setup
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    private function validate(array $setup): void
+    {
+        $this->validateKeyExists($setup, self::SETUP_KEY_OPTIONS);
+        $this->validateKeyIsArray($setup, self::SETUP_KEY_OPTIONS);
+
+        $this->validateKeyExists($setup, self::SETUP_KEY_GROUPS);
+        $this->validateKeyIsArray($setup, self::SETUP_KEY_GROUPS);
+    }
+
+    /**
+     * @param array $setup
+     * @param string $key
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    private function validateKeyExists(array $setup, string $key): void
+    {
+        // All fine if isset
+        if (isset($setup[$key])) {
+            return;
+        }
+
+        $message = sprintf(
+            "The configuration file is missing the '%s' property.",
+            $key
+        );
+
+        throw new InvalidArgumentException($message);
+    }
+
+
+    /**
+     * @param array $setup
+     * @param string $key
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    private function validateKeyIsArray(array $setup, string $key): void
+    {
+        // All fine if is array
+        if (is_array($setup[$key])) {
+            return;
+        }
+
+        $message = sprintf(
+            "The %s property must be an array.",
+            $key
+        );
+
+        throw new InvalidArgumentException($message);
     }
 }
