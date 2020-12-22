@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service\Loader\DataSource;
+namespace IceCake\AppConfigurator\Common\DataSource;
 
 use Exception;
 use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;

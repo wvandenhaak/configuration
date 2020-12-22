@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Config\Service\Loader;
+namespace IceCake\AppConfigurator\Test\Common\DataSource;
 
+use IceCake\AppConfigurator\Common\DataSource\ArrayDataSource;
 use IceCake\AppConfigurator\Config\Exception\LoadingException;
-use IceCake\AppConfigurator\Config\Service\Loader\DataSource\ArrayDataSource;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,7 +23,7 @@ class ArrayDataSourceTest extends TestCase
      */
     public function setup(): void
     {
-        $this->filename = dirname(dirname(dirname(dirname(__DIR__)))) . '/data/files/test-configuration.php';
+        $this->filename = dirname(dirname(__DIR__)) . '/data/files/test-configuration.php';
     }
 
     /**

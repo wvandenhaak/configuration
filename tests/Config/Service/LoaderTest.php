@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Config\Service\Loader;
+namespace IceCake\AppConfigurator\Test\Config\Service;
 
-use IceCake\AppConfigurator\Config\Service\Loader\{
-    DataSource\YamlDataSource,
-    Loader
-};
+use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
+use IceCake\AppConfigurator\Config\Service\Loader;
 use PHPUnit\Framework\TestCase;
 
 /**

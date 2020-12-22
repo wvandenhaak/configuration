@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service\Writer\DataStore;
+namespace IceCake\AppConfigurator\Common\DataStore;
 
 use IceCake\AppConfigurator\Common\Contract\DataStoreInterface;
-use IceCake\AppConfigurator\Config\Exception\WriteException;
 use IceCake\AppConfigurator\Config\Model\Config;
+use Symfony\Component\Yaml\Yaml;
 
 /**
- * Description of ArrayDataStore
+ * Description of YamlDataStore
  *
  * @author Wesley van den haak
  */
-class ArrayDataStore implements DataStoreInterface
+class YamlDataStore implements DataStoreInterface
 {
 
     private string $folderPath;
@@ -43,11 +43,10 @@ class ArrayDataStore implements DataStoreInterface
         // @todo check double or missing directory separators?
         
         // Create file contents
-        $configData = $config->getAll();
-        $data = [DataStoreInterface::CONFIG_KEY => $configData];
-        
-        $fileContents = "<?php\n\nreturn " . var_export($data, true) . "\n\n?>";
-        
+        $fileContents = Yaml::dump([
+            DataStoreInterface::CONFIG_KEY => $config->getAll()
+        ]);
+
         // Write file
         file_put_contents($fullFileName, $fileContents);
     }

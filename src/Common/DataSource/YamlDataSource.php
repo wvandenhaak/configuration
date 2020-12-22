@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service\Loader\DataSource;
+namespace IceCake\AppConfigurator\Common\DataSource;
 
 use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
 use IceCake\AppConfigurator\Config\Exception\LoadingException;
@@ -37,15 +37,15 @@ class YamlDataSource implements DataSourceInterface
 
         if (!is_file($this->filename)) {
             $message = sprintf(
-                    'File "%s" does not exist.',
-                    $this->filename
+                'File "%s" does not exist.',
+                $this->filename
             );
         }
 
         if (!is_readable($this->filename)) {
             $message = sprintf(
-                    'File "%s" is not readable.',
-                    $this->filename
+                'File "%s" is not readable.',
+                $this->filename
             );
         }
 

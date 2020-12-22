@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service\Writer;
+namespace IceCake\AppConfigurator\Config\Service;
 
 use Exception;
 use IceCake\AppConfigurator\Common\Contract\DataStoreInterface;

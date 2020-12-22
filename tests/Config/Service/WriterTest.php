@@ -2,15 +2,13 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Config\Service\Writer;
+namespace IceCake\AppConfigurator\Test\Config\Service;
 
 use Exception;
+use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
 use IceCake\AppConfigurator\Config\Exception\WriteException;
 use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Config\Service\Writer\{
-    DataStore\ArrayDataStore,
-    Writer
-};
+use IceCake\AppConfigurator\Config\Service\Writer;
 use PHPUnit\Framework\TestCase;
 
 /**

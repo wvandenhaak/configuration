@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service\Loader;
+namespace IceCake\AppConfigurator\Config\Service;
 
 use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
 

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup;
+namespace IceCake\AppConfigurator\Setup\Service;
 
 use InvalidArgumentException;
+use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
 use IceCake\AppConfigurator\Setup\Model\Group\Group;
 use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
 use IceCake\AppConfigurator\Setup\Model\Option\Option;
 use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
 use IceCake\AppConfigurator\Setup\Model\Setup;
-use IceCake\AppConfigurator\Setup\SetupDataSource;
 
 /**
  * Description of Loader
@@ -21,10 +21,10 @@ class Loader
 {
 
     /**
-     * @param SetupDataSource $dataSource
+     * @param YamlDataSource $dataSource
      * @return Setup
      */
-    public function load(SetupDataSource $dataSource): Setup
+    public function load(YamlDataSource $dataSource): Setup
     {
         // Load
         $dataSource->validate();

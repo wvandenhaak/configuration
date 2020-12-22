@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service\Writer\DataStore;
+namespace IceCake\AppConfigurator\Test\Common\DataStore;
 
+use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
 use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Config\Service\Writer\DataStore\ArrayDataStore;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -26,7 +26,7 @@ class ArrayDataStoreTest extends TestCase
     public function setUp(): void
     {
         $this->filename = 'unittest-array-datastore.php';
-        $this->folder = dirname(dirname(dirname(dirname(__DIR__)))) . '/data/files/';
+        $this->folder = dirname(dirname(__DIR__)) . '/data/files/';
         $this->fullPath = $this->folder . DIRECTORY_SEPARATOR . $this->filename;
     }
 
