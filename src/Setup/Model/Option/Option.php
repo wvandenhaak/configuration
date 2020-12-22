@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Setup\Model\Option;
 
-use IceCake\AppConfigurator\Common\Contract\OptionTypeInterface;
+use IceCake\AppConfigurator\Common\Contract\OptionValueInterface;
 
 /**
  * Description of Option
@@ -15,18 +15,18 @@ class Option
 {
 
     private string $key;
-    private OptionTypeInterface $value;
-    private mixed $default;
+    private OptionValueInterface $value;
+    private ?OptionValueInterface $default;
     
     /**
      * @param string $key
-     * @param OptionTypeInterface $value
-     * @param mixed $default
+     * @param OptionValueInterface $value
+     * @param OptionValueInterface|null $default
      */
     public function __construct(
         string $key,
-        OptionTypeInterface $value,
-        mixed $default
+        OptionValueInterface $value,
+        ?OptionValueInterface $default
     )
     {
         $this->key = $key;
@@ -53,9 +53,10 @@ class Option
     /**
      * @return mixed
      */
-    public function getDefault(): mixed
+    public function getDefaultValue(): mixed
     {
-        return $this->default;
+        // Return NULL of value from object
+        return $this->default?->getValue();
     }
 
 }

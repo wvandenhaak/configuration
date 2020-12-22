@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Setup\Model\Group;
 
+use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
+
 /**
  * Description of Group
  *
@@ -13,16 +15,16 @@ class Group
 {
 
     private string $name;
-    private array $keys;
+    private OptionCollection $options;
 
     /**
      * @param string $name
-     * @param array $keys
+     * @param OptionCollection $options
      */
-    public function __construct(string $name, array $keys)
+    public function __construct(string $name, OptionCollection $options)
     {
         $this->name = $name;
-        $this->keys = $keys;
+        $this->options = $options;
     }
 
     /**
@@ -34,11 +36,11 @@ class Group
     }
 
     /**
-     * @return array
+     * @return OptionCollection
      */
-    public function getKeys(): array
+    public function getOptions(): OptionCollection
     {
-        return $this->keys;
+        return $this->options;
     }
 
 }

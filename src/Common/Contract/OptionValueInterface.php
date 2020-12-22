@@ -8,7 +8,7 @@ namespace IceCake\AppConfigurator\Common\Contract;
  *
  * @author Wesley van den haak
  */
-interface OptionTypeInterface
+interface OptionValueInterface
 {
 
     public function getValue();

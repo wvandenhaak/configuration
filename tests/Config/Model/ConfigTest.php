@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Model\Config;
+namespace IceCake\AppConfigurator\Tests\Config\Model;
 
 use IceCake\AppConfigurator\Config\Model\Config;
 use PHPUnit\Framework\TestCase;

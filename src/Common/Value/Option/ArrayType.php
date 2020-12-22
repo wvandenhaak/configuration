@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Common\Value\Option;
 
-use IceCake\AppConfigurator\Common\Contract\OptionTypeInterface;
+use IceCake\AppConfigurator\Common\Contract\OptionValueInterface;
 
 /**
  * Description of ArrayType
  *
  * @author Wesley van den haak
  */
-class ArrayType implements OptionTypeInterface
+class ArrayType implements OptionValueInterface
 {
 
     private array $value;

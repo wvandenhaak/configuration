@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Common\Value\Option;
 
-use IceCake\AppConfigurator\Common\Contract\OptionTypeInterface;
+use IceCake\AppConfigurator\Common\Contract\OptionValueInterface;
 
 /**
  * Description of BooleanType
  *
  * @author Wesley van den haak
  */
-class BooleanType implements OptionTypeInterface
+class BooleanType implements OptionValueInterface
 {
 
     private bool $value;

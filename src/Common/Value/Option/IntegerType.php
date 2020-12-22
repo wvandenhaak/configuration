@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Common\Value\Option;
 
-use IceCake\AppConfigurator\Common\Contract\OptionTypeInterface;
+use IceCake\AppConfigurator\Common\Contract\OptionValueInterface;
 
 /**
  * Description of IntegerType
  *
  * @author Wesley van den haak
  */
-class IntegerType implements OptionTypeInterface
+class IntegerType implements OptionValueInterface
 {
     
     private int $value;

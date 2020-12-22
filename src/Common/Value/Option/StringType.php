@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Common\Value\Option;
 
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\Contract\OptionTypeInterface;
+use IceCake\AppConfigurator\Common\Contract\OptionValueInterface;
 
 /**
  * Description of StringType
  *
  * @author Wesley van den haak
  */
-class StringType implements OptionTypeInterface
+class StringType implements OptionValueInterface
 {
 
     private string $value;

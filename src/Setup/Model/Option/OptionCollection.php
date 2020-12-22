@@ -44,6 +44,22 @@ class OptionCollection implements IteratorAggregate, Countable
     }
 
     /**
+     * Find an Option by its key
+     * @param string $key
+     * @return Option|null
+     */
+    public function findOption(string $key): ?Option
+    {
+        foreach ($this->elements as $option) {
+            if ($option->getKey() === $key) {
+                return $option;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @return Traversable
      */
     public function getIterator(): Traversable
