@@ -16,6 +16,11 @@ use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
 class OptionParser
 {
 
+    private const KEY_KEY = 'key';
+    private const KEY_CHOICES = 'choices';
+    private const KEY_DEFAULT = 'default';
+    private const KEY_TYPE = 'type';
+
     /**
      * @param array $options
      * @return OptionCollection
@@ -42,24 +47,24 @@ class OptionParser
     private function parseOption(array $option): Option
     {
         // Create new object based on given type and inject value
-        $typeClassname = $option['type'];
+        $typeClassname = $option[self::KEY_TYPE];
 
         // Get all possible choices
         $choices = [];
-        if (isset($option['choices'])) {
-            foreach($option['choices'] as $choice) {
+        if (isset($option[self::KEY_CHOICES])) {
+            foreach($option[self::KEY_CHOICES] as $choice) {
                 $choices[] = $choice;
             }
         }
 
         // Default is null. If a value is give parse it into a Value object to force value to be
         $default = null;
-        if (isset($option['default']) && $option['default'] !== null) {
-            $default = new $typeClassname($option['default']);
+        if (isset($option[self::KEY_DEFAULT]) && $option[self::KEY_DEFAULT] !== null) {
+            $default = new $typeClassname($option[self::KEY_DEFAULT]);
         }
 
         return new Option(
-            $option['key'],
+            $option[self::KEY_KEY],
             $default,
             $choices
         );
@@ -75,30 +80,41 @@ class OptionParser
     private function validateOption(array $option): void
     {
         // Check if option has a value key and the contents are not empty.
-        if (empty($option['key'])) {
-            throw new InvalidArgumentException("Option missing required 'key' property.");
-        }
-
-        // Check if an valid option type class is given
-        if (empty($option['type'])) {
-            throw new InvalidArgumentException("Option missing required 'type' property.");
-        }
-
-        if(class_exists($option['type']) === false) {
+        if (empty($option[self::KEY_KEY])) {
             $message = sprintf(
-                "Option type class %s does not exist.",
-                $option['type']
+                "Option missing required '%s' property.",
+                self::KEY_KEY
             );
 
             throw new InvalidArgumentException($message);
         }
 
-        // Check if option has a value key and the contents are not empty.
-        // @todo: check not empty (note: boolean values are allowed)
-        if (isset($option['choices']) && !is_array($option['choices'])) {
+        // Check if an valid option type class is given
+        if (empty($option[self::KEY_TYPE])) {
             $message = sprintf(
-                "Choices for option with key %s must be an array.",
-                $option['key']
+                "Option missing required '%s' property.",
+                self::KEY_TYPE
+            );
+
+            throw new InvalidArgumentException($message);
+        }
+
+        // Check if given class exists
+        if(class_exists($option[self::KEY_TYPE]) === false) {
+            $message = sprintf(
+                "Option type class %s does not exist.",
+                $option[self::KEY_TYPE]
+            );
+
+            throw new InvalidArgumentException($message);
+        }
+
+        // Check if option has a list of choices
+        if (isset($option[self::KEY_CHOICES]) && !is_array($option[self::KEY_CHOICES])) {
+            $message = sprintf(
+                "%s for option with key %s must be an array.",
+                ucfirst(self::KEY_CHOICES),
+                $option[self::KEY_KEY]
             );
 
             throw new InvalidArgumentException($message);

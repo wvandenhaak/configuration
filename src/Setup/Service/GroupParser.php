@@ -17,6 +17,9 @@ use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
 class GroupParser
 {
 
+    private const KEY_NAME = 'name';
+    private const KEY_KEYS = 'keys';
+
     /**
      * @param OptionCollection $options
      * @param array $groups
@@ -34,8 +37,8 @@ class GroupParser
             $this->validateGroup($group);
 
             $group = $this->parseGroup(
-                $group['name'],
-                $group['keys'],
+                $group[self::KEY_NAME],
+                $group[self::KEY_KEYS],
                 $options
             );
 
@@ -86,18 +89,18 @@ class GroupParser
      */
     private function validateGroup(array $group): void
     {
-        if (empty($group['name'])) {
+        if (empty($group[self::KEY_NAME])) {
             throw new InvalidArgumentException("Group missing required 'name' key.");
         }
 
-        if (empty($group['keys'])) {
+        if (empty($group[self::KEY_KEYS])) {
             throw new InvalidArgumentException("Group missing required 'keys' key.");
         }
 
-        if (is_array($group['keys']) === false) {
+        if (is_array($group[self::KEY_KEYS]) === false) {
             $message = sprintf(
                 "Group '%s' is missing an array of keys.",
-                $group['name']
+                $group[self::KEY_NAME]
             );
 
             throw new InvalidArgumentException($message);
