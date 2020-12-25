@@ -14,7 +14,6 @@ use IceCake\AppConfigurator\Config\Model\Config;
  */
 class Parser
 {
-    private const CONFIGURATION_KEY = 'configuration';
     
     /**
      * Parse an array into a config file
@@ -24,7 +23,7 @@ class Parser
      */
     public function parse(array $configArray): Config
     {
-        if (!array_key_exists(self::CONFIGURATION_KEY, $configArray)) {
+        if (!array_key_exists(Config::KEY, $configArray)) {
             $message = sprintf(
                 "Options are missing from the config"
             );

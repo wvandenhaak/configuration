@@ -12,8 +12,6 @@ use IceCake\AppConfigurator\Config\Model\Config;
  */
 interface DataStoreInterface
 {
-    
-    public const CONFIG_KEY = 'configuration';
 
     public function save(Config $config): void;
 }

@@ -44,7 +44,7 @@ class YamlDataStore implements DataStoreInterface
         
         // Create file contents
         $fileContents = Yaml::dump([
-            DataStoreInterface::CONFIG_KEY => $config->getAll()
+            Config::KEY => $config->getAll()
         ]);
 
         // Write file
