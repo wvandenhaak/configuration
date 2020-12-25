@@ -52,10 +52,9 @@ class OptionParser
             }
         }
 
-        // Default is null. If a value is give parse it into a Value object to
-        // enforce same basic value (e.g. both int or string)
+        // Default is null. If a value is give parse it into a Value object to force value to be
         $default = null;
-        if (!empty($option['default'])) {
+        if (isset($option['default']) && $option['default'] !== null) {
             $default = new $typeClassname($option['default']);
         }
 
