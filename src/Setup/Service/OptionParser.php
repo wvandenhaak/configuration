@@ -43,7 +43,14 @@ class OptionParser
     {
         // Create new object based on given type and inject value
         $typeClassname = $option['type'];
-        $value = new $typeClassname($option['value']);
+
+        // Get all possible choices
+        $choices = [];
+        if (isset($option['choices'])) {
+            foreach($option['choices'] as $choice) {
+                $choices[] = $choice;
+            }
+        }
 
         // Default is null. If a value is give parse it into a Value object to
         // enforce same basic value (e.g. both int or string)
@@ -54,8 +61,8 @@ class OptionParser
 
         return new Option(
             $option['key'],
-            $value,
-            $default
+            $default,
+            $choices
         );
     }
 
@@ -89,9 +96,9 @@ class OptionParser
 
         // Check if option has a value key and the contents are not empty.
         // @todo: check not empty (note: boolean values are allowed)
-        if (isset($option['value']) === false) {
+        if (isset($option['choices']) && !is_array($option['choices'])) {
             $message = sprintf(
-                "Value for option with key %s may not be empty.",
+                "Choices for option with key %s must be an array.",
                 $option['key']
             );
 

@@ -15,23 +15,23 @@ class Option
 {
 
     private string $key;
-    private OptionValueInterface $value;
+    private array $choices;
     private ?OptionValueInterface $default;
     
     /**
      * @param string $key
-     * @param OptionValueInterface $value
      * @param OptionValueInterface|null $default
+     * @param array $choices;
      */
     public function __construct(
         string $key,
-        OptionValueInterface $value,
-        ?OptionValueInterface $default
+        ?OptionValueInterface $default,
+        array $choices
     )
     {
         $this->key = $key;
-        $this->value = $value;
         $this->default = $default;
+        $this->choices = $choices;
     }
 
     /**
@@ -43,11 +43,11 @@ class Option
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getValue(): mixed
+    public function getChoices(): array
     {
-        return $this->value->getValue();
+        return $this->choices;
     }
 
     /**

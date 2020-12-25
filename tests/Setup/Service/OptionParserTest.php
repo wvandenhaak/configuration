@@ -72,10 +72,10 @@ class OptionParserTest extends TestCase
     public function dataProviderInvalidSetupContents(): array
     {
         return [
-            ["data" => [],                                                      "message" => "Missing 'key' key"],
-            ["data" => ['key' => 'key_1'],                                      "message" => "Missing 'type' key"],
-            ["data" => ['key' => 'key_1', 'type' => StringType::class],         "message" => "Missing 'value' key"],
-            ["data" => ['key' => 'key_1', 'type' => 'Not\Existing\ClassName'],  "message" => "Given class for type does not exist"],
+            ["data" => [],                                                                           "message" => "Missing 'key' key"],
+            ["data" => ['key' => 'key_1'],                                                           "message" => "Missing 'type' key"],
+            ["data" => ['key' => 'key_1', 'type' => StringType::class, 'choices' => 'not_an_array'], "message" => "'choices' key must be an array"],
+            ["data" => ['key' => 'key_1', 'type' => 'Not\Existing\ClassName'],                       "message" => "Given class for type does not exist"],
         ];
     }
 }

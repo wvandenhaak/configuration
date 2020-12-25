@@ -23,21 +23,17 @@ class OptionTest extends TestCase
     public function testCanCreate(): void
     {
         $key = 'random_key';
-        $value = 'random_value';
+        $choices = ['random', 'value', 'to', 'choose', 'from'];
         $default = 'default_value';
-        
-        $valueObject = $this->createMock(StringType::class);
-        $valueObject->method('getValue')
-                ->willReturn($value);
         
         $defaultObject = $this->createMock(StringType::class);
         $defaultObject->method('getValue')
                 ->willReturn($default);
         
-        $subject = new Option($key, $valueObject, $defaultObject);
-        
+        $subject = new Option($key, $defaultObject, $choices);
+
         $this->assertSame($key, $subject->getKey());
-        $this->assertSame($value, $subject->getValue());
+        $this->assertSame($choices, $subject->getChoices());
         $this->assertSame($default, $subject->getDefaultValue());
     }
 }
