@@ -36,8 +36,8 @@ class OptionParserTest extends TestCase
     public function testCanParse(): void
     {
         $optionsArray = [
-            ['key' => 'key_1', 'value' => 'value_1', 'type' => StringType::class],
-            ['key' => 'key_2', 'value' => ['a', 'b', 'c'], 'type' => ArrayType::class, 'default' => ['d']]
+            ['key' => 'key_1', 'choices' => [], 'type' => StringType::class],
+            ['key' => 'key_2', 'choices' => ['a', 'b', 'c'], 'type' => ArrayType::class, 'default' => ['d']]
         ];
 
         $actual = $this->subject->parse($optionsArray);
