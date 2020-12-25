@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Setup\Model;
 
+use IceCake\AppConfigurator\Common\Contract\ReadableConfigInterface;
 use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
 use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
 
@@ -12,7 +13,7 @@ use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
  *
  * @author Wesley van den haak
  */
-class Setup
+class Setup implements ReadableConfigInterface
 {
 
     private OptionCollection $options;
@@ -29,6 +30,15 @@ class Setup
     {
         $this->options = $options;
         $this->groups = $groups;
+    }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function get(string $key): mixed
+    {
+        return $this->options->findOption($key)?->getDefaultValue();
     }
 
     /**

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Setup\Service;
 
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
+use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
 use IceCake\AppConfigurator\Setup\Model\Setup;
 use IceCake\AppConfigurator\Setup\Service\GroupParser;
 use IceCake\AppConfigurator\Setup\Service\OptionParser;
@@ -37,10 +37,10 @@ class Loader
     }
 
     /**
-     * @param YamlDataSource $dataSource
+     * @param DataSourceInterface $dataSource
      * @return Setup
      */
-    public function load(YamlDataSource $dataSource): Setup
+    public function load(DataSourceInterface $dataSource): Setup
     {
         // Load
         $dataSource->validate();

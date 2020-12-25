@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Config\Model;
 
+use IceCake\AppConfigurator\Common\Contract\ReadableConfigInterface;
+
 /**
  * The config is an object which holds multiple key-value pairs
  *
  * @author Wesley van den haak
  */
-class Config
+class Config implements ReadableConfigInterface
 {
 
     private array $elements;
