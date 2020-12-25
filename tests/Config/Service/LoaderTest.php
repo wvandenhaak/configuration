@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Test\Config\Service;
 
 use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
+use IceCake\AppConfigurator\Config\Model\Config;
 use IceCake\AppConfigurator\Config\Service\Loader;
+use IceCake\AppConfigurator\Config\Service\Parser;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,7 +25,16 @@ class LoaderTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->subject = new Loader();
+        $configMock = $this->getMockBuilder(Config::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $parserMock = $this->createMock(Parser::class);
+
+        $parserMock->method('parse')
+            ->willReturn($configMock);
+
+        $this->subject = new Loader($parserMock);
     }
 
     /**
@@ -39,7 +50,7 @@ class LoaderTest extends TestCase
         $dataSourceMock->method('load')
                 ->willReturn([]);
 
-        $this->assertIsArray($this->subject->load($dataSourceMock));
+        $this->assertInstanceOf(Config::class, $this->subject->load($dataSourceMock));
     }
 
 }

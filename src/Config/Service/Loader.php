@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Config\Service;
 
 use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
+use IceCake\AppConfigurator\Config\Model\Config;
 
 /**
  * Description of Loader
@@ -14,17 +15,28 @@ use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
 class Loader
 {
 
+    private Parser $parser;
+
+    /**
+     * @param Parser $parser
+     */
+    public function __construct(Parser $parser)
+    {
+        $this->parser = $parser;
+    }
+
     /**
      * @param DataSourceInterface $dataSource
-     * @return array
+     * @return Config
      */
-    public function load(DataSourceInterface $dataSource): array
+    public function load(DataSourceInterface $dataSource): Config
     {
-        
         $dataSource->validate();
 
-        // @todo convert values so we avoid returning arrays
-        return $dataSource->load();
+        // Load data
+        $data = $dataSource->load();
+
+        return $this->parser->parse($data);
     }
 
 }
