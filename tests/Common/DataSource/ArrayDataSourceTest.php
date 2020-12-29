@@ -9,7 +9,7 @@ use IceCake\AppConfigurator\Config\Exception\LoadingException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Description of LoaderTest
+ * Description of ArrayDataSourceTest
  *
  * @author Wesley van den haak
  */
