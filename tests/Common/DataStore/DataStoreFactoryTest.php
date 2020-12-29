@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Common\DataStore;
+namespace IceCake\AppConfigurator\Tests\Common\DataStore;
 
 use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
 use IceCake\AppConfigurator\Common\DataStore\DataStoreFactory;

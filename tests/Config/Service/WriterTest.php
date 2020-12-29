@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Config\Service;
+namespace IceCake\AppConfigurator\Tests\Config\Service;
 
 use Exception;
 use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;

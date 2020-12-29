@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Common\DataSource;
+namespace IceCake\AppConfigurator\Tests\Common\DataSource;
 
 use IceCake\AppConfigurator\Common\DataSource\ArrayDataSource;
 use IceCake\AppConfigurator\Common\DataSource\DataSourceFactory;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Common\Value\Option;
+namespace IceCake\AppConfigurator\Tests\Common\Value\Option;
 
 use InvalidArgumentException;
 use IceCake\AppConfigurator\Common\Value\Option\StringType;

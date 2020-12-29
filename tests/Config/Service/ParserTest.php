@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Config\Service;
+namespace IceCake\AppConfigurator\Tests\Config\Service;
 
 use IceCake\AppConfigurator\Config\Exception\ParseException;
 use IceCake\AppConfigurator\Config\Model\Config;

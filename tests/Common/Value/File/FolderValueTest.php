@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Test\Common\Value\File;
+namespace IceCake\AppConfigurator\Tests\Common\Value\File;
 
 use InvalidArgumentException;
 use IceCake\AppConfigurator\Common\Value\File\FolderValue;
