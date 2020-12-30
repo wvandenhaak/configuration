@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Tests\Setup\Service;
 
 use IceCake\AppConfigurator\Common\Value\Option\ArrayType;
+use IceCake\AppConfigurator\Tests\data\classes\CustomOptionProvider;
+use IceCake\AppConfigurator\Tests\data\classes\InvalidCustomOptionProvider;
 use InvalidArgumentException;
 use IceCake\AppConfigurator\Common\Value\Option\StringType;
 use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
@@ -37,13 +39,14 @@ class OptionParserTest extends TestCase
     {
         $optionsArray = [
             ['key' => 'key_1', 'choices' => [], 'type' => StringType::class],
-            ['key' => 'key_2', 'choices' => ['a', 'b', 'c'], 'type' => ArrayType::class, 'default' => ['d']]
+            ['key' => 'key_2', 'choices' => ['a', 'b', 'c'], 'type' => ArrayType::class, 'default' => ['d']],
+            ['key' => 'key_3', 'provider' => CustomOptionProvider::class],
         ];
 
         $actual = $this->subject->parse($optionsArray);
 
         $this->assertInstanceOf(OptionCollection::class, $actual);
-        $this->assertCount(2, $actual);
+        $this->assertCount(count($optionsArray), $actual);
     }
 
     /**
@@ -76,6 +79,11 @@ class OptionParserTest extends TestCase
             ["data" => ['key' => 'key_1'],                                                           "message" => "Missing 'type' key"],
             ["data" => ['key' => 'key_1', 'type' => StringType::class, 'choices' => 'not_an_array'], "message" => "'choices' key must be an array"],
             ["data" => ['key' => 'key_1', 'type' => 'Not\Existing\ClassName'],                       "message" => "Given class for type does not exist"],
+
+            ["data" => ['provider' => 'Not\Existing\ClassName'],                                     "message" => "Missing 'key' key for provider option"],
+            ["data" => ['key' => 'key_2', 'provider' => ''],                                         "message" => "'provider' key may not be empty"],
+            ["data" => ['key' => 'key_2', 'provider' => 'Not\Existing\ClassName'],                   "message" => "Given class for provider does not exist"],
+            ["data" => ['key' => 'key_2', 'provider' => InvalidCustomOptionProvider::class],         "message" => "Provider class does not implement required interface"],
         ];
     }
 }

@@ -48,9 +48,17 @@ options:
         type: 'IceCake\AppConfigurator\Common\Value\Option\IntegerType',
     }
 
+    # Custom class to retrieve option values from.
+    # Class must implement IceCake\AppConfigurator\Common\Contract\OptionProviderInterface 
+    - {
+      key: 'key_5',
+      provider: 'IceCake\AppConfigurator\Tests\data\classes\CustomOptionProvider'
+    }
+
 groups:
     - {name: Group 1, keys: [key_1, key_2] }
     - {name: Group 2, keys: [key_3, key_4] }
+    - {name: Group 3, keys: [key_5] }
 ```
 
 ## Step 3: Load or Generate a Configuration
