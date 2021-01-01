@@ -13,7 +13,6 @@ use IceCake\AppConfigurator\Setup\Model\Setup;
 use IceCake\AppConfigurator\Setup\Service\GroupParser;
 use IceCake\AppConfigurator\Setup\Service\Loader;
 use IceCake\AppConfigurator\Setup\Service\OptionParser;
-use PhpParser\Node\Expr\ArrayItem;
 use PHPUnit\Framework\TestCase;
 
 /**
