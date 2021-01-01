@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Setup\Service;
 
+use IceCake\AppConfigurator\Config\Model\Config;
 use InvalidArgumentException;
 use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
 use IceCake\AppConfigurator\Setup\Model\Setup;
@@ -53,7 +54,16 @@ class Loader
         $options = $this->optionParser->parse($setup[self::SETUP_KEY_OPTIONS]);
         $groups = $this->groupParser->parse($options, $setup[self::SETUP_KEY_GROUPS]);
 
-        return new Setup($options, $groups);
+        // Create Config object
+        // @todo move options array to different class so this loop can be moved (also remove getIterator mocking from PHPUnit
+        $elements = [];
+        foreach ($options as $option) {
+            $elements[$option->getKey()] = $option->getDefaultValue();
+        }
+
+        $config = new Config($elements);
+
+        return new Setup($options, $groups, $config);
     }
 
     /**

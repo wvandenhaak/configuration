@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Setup\Model;
 
 use IceCake\AppConfigurator\Common\Contract\ReadableConfigInterface;
+use IceCake\AppConfigurator\Config\Model\Config;
 use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
 use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
 
@@ -16,20 +17,24 @@ use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
 class Setup implements ReadableConfigInterface
 {
 
+    private Config $config;
     private OptionCollection $options;
     private GroupCollection $groups;
 
     /**
      * @param OptionCollection $options
      * @param GroupCollection $groups
+     * @param Config $config
      */
     public function __construct(
         OptionCollection $options,
-        GroupCollection $groups
+        GroupCollection $groups,
+        Config $config
     )
     {
         $this->options = $options;
         $this->groups = $groups;
+        $this->config = $config;
     }
 
     /**
@@ -55,6 +60,14 @@ class Setup implements ReadableConfigInterface
     public function getGroups(): GroupCollection
     {
         return $this->groups;
+    }
+
+    /**
+     * @return Config
+     */
+    public function getConfig(): Config
+    {
+        return $this->config;
     }
 
 }

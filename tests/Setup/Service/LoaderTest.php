@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace IceCake\AppConfigurator\Tests\Setup\Service;
 
+use ArrayIterator;
 use InvalidArgumentException;
 use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
 use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
@@ -12,6 +13,7 @@ use IceCake\AppConfigurator\Setup\Model\Setup;
 use IceCake\AppConfigurator\Setup\Service\GroupParser;
 use IceCake\AppConfigurator\Setup\Service\Loader;
 use IceCake\AppConfigurator\Setup\Service\OptionParser;
+use PhpParser\Node\Expr\ArrayItem;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -36,6 +38,10 @@ class LoaderTest extends TestCase
             ->willReturn($groupCollectionMock);
 
         $optionCollectionMock = $this->createMock(OptionCollection::class);
+
+        // Added for looping when loader creates an config object
+        $optionCollectionMock->method('getIterator')
+            ->willReturn(new ArrayIterator([]));
 
         $optionParserMock = $this->createMock(OptionParser::class);
         $optionParserMock->method('parse')
