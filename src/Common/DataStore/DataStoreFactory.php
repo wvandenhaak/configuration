@@ -6,6 +6,8 @@ namespace IceCake\AppConfigurator\Common\DataStore;
 
 use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
 use IceCake\AppConfigurator\Common\DataStore\YamlDataStore;
+use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
+use IceCake\AppConfigurator\Common\Value\File\FolderValue;
 
 /**
  * @author Wesley van den haak
@@ -14,28 +16,28 @@ class DataStoreFactory
 {
 
     /**
-     * @param string $folderPath
-     * @param string $filename
+     * @param FolderValue $folder
+     * @param FileNameValue $filename
      * @return ArrayDataStore
      */
     public function createArrayDataStore(
-        string $folderPath,
-        string $filename
+        FolderValue $folder,
+        FileNameValue $filename
     ): ArrayDataStore
     {
-        return new ArrayDataStore($folderPath, $filename);
+        return new ArrayDataStore($folder, $filename);
     }
 
     /**
-     * @param string $folderPath
-     * @param string $filename
+     * @param FolderValue $folder
+     * @param FileNameValue $filename
      * @return YamlDataStore
      */
     public function createYamlDataStore(
-        string $folderPath,
-        string $filename
+        FolderValue $folder,
+        FileNameValue $filename
     ): YamlDataStore
     {
-        return new YamlDataStore($folderPath, $filename);
+        return new YamlDataStore($folder, $filename);
     }
 }

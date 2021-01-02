@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Common\DataStore;
 
 use IceCake\AppConfigurator\Common\Contract\DataStoreInterface;
+use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
+use IceCake\AppConfigurator\Common\Value\File\FolderValue;
 use IceCake\AppConfigurator\Config\Model\Config;
 use Symfony\Component\Yaml\Yaml;
 
@@ -16,19 +18,19 @@ use Symfony\Component\Yaml\Yaml;
 class YamlDataStore implements DataStoreInterface
 {
 
-    private string $folderPath;
-    private string $filename;
+    private FolderValue $folder;
+    private FileNameValue $filename;
 
     /**
-     * @param string $folderPath
-     * @param string $filename
+     * @param FolderValue $folder
+     * @param FileNameValue $filename
      */
     public function __construct(
-        string $folderPath,
-        string $filename
+        FolderValue $folder,
+        FileNameValue $filename
     )
     {
-        $this->folderPath = $folderPath;
+        $this->folder = $folder;
         $this->filename = $filename;
     }
 
@@ -38,10 +40,8 @@ class YamlDataStore implements DataStoreInterface
      */
     public function save(Config $config): void
     {
+        $fullFileName = $this->folder->getValue() . DIRECTORY_SEPARATOR . $this->filename->getValue();
 
-        $fullFileName = $this->folderPath . DIRECTORY_SEPARATOR . $this->filename;
-        // @todo check double or missing directory separators?
-        
         // Create file contents
         $fileContents = Yaml::dump([
             Config::KEY => $config->getAll()

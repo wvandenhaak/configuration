@@ -7,6 +7,8 @@ namespace IceCake\AppConfigurator\Tests\Common\DataStore;
 use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
 use IceCake\AppConfigurator\Common\DataStore\DataStoreFactory;
 use IceCake\AppConfigurator\Common\DataStore\YamlDataStore;
+use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
+use IceCake\AppConfigurator\Common\Value\File\FolderValue;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,8 +19,8 @@ use PHPUnit\Framework\TestCase;
 class DataStoreFactoryTest extends TestCase
 {
 
-    private string $folder;
-    private string $filename;
+    private FolderValue $folder;
+    private FileNameValue $filename;
     private DataStoreFactory $subject;
 
     /**
@@ -26,9 +28,16 @@ class DataStoreFactoryTest extends TestCase
      */
     public function setUp(): void
     {
-        // @todo make correct files. PHP file type is not valid for some DataSource classes
-        $this->filename = 'unittest-array-datastore.php';
-        $this->folder = dirname(dirname(__DIR__)) . '/data/files/';
+        $filename = $this->createMock(FileNameValue::class);
+        $filename->method('getValue')
+            ->willReturn('unittest-array-datastore.php'); // PHP file type is not valid for some DataSource classes. Does not matter for testing
+
+        $folder = $this->createMock(FolderValue::class);
+        $folder->method('getValue')
+            ->willReturn(dirname(dirname(__DIR__)) . '/data/files/');
+
+        $this->folder = $folder;
+        $this->filename = $filename;
 
         $this->subject = new DataStoreFactory();
     }

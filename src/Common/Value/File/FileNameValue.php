@@ -22,8 +22,8 @@ class FileNameValue
      * @param string $extension
      */
     public function __construct(
-            string $name,
-            string $extension
+        string $name,
+        string $extension
     )
     {
         $this->setFileName($name);

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Tests\Common\DataStore;
 
 use IceCake\AppConfigurator\Common\DataStore\YamlDataStore;
+use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
+use IceCake\AppConfigurator\Common\Value\File\FolderValue;
 use IceCake\AppConfigurator\Config\Model\Config;
 use PHPUnit\Framework\TestCase;
 
@@ -16,8 +18,8 @@ use PHPUnit\Framework\TestCase;
 class YamlDataStoreTest extends TestCase
 {
 
-    private string $folder;
-    private string $filename;
+    private FolderValue $folder;
+    private FileNameValue $filename;
     private string $fullPath;
 
     /**
@@ -25,9 +27,17 @@ class YamlDataStoreTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->filename = 'unittest-yaml-datastore.yaml';
-        $this->folder = dirname(dirname(__DIR__)) . '/data/files/';
-        $this->fullPath = $this->folder . DIRECTORY_SEPARATOR . $this->filename;
+        $filename = $this->createMock(FileNameValue::class);
+        $filename->method('getValue')
+            ->willReturn('unittest-yaml-datastore.yaml');
+
+        $folder = $this->createMock(FolderValue::class);
+        $folder->method('getValue')
+            ->willReturn(dirname(dirname(__DIR__)) . '/data/files/');
+
+        $this->folder = $folder;
+        $this->filename = $filename;
+        $this->fullPath = $this->folder->getValue() . DIRECTORY_SEPARATOR . $this->filename->getValue();
     }
 
     /**
