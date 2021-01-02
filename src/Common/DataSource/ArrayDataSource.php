@@ -6,7 +6,7 @@ namespace IceCake\AppConfigurator\Common\DataSource;
 
 use Exception;
 use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
-use IceCake\AppConfigurator\Config\Exception\LoadingException;
+use IceCake\AppConfigurator\Common\Exception\LoadingException;
 
 /**
  * Loads an (returned) array from a PHP file

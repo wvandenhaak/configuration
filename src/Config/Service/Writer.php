@@ -6,7 +6,7 @@ namespace IceCake\AppConfigurator\Config\Service;
 
 use Exception;
 use IceCake\AppConfigurator\Common\Contract\DataStoreInterface;
-use IceCake\AppConfigurator\Config\Exception\WriteException;
+use IceCake\AppConfigurator\Common\Exception\WriteException;
 use IceCake\AppConfigurator\Config\Model\Config;
 
 /**

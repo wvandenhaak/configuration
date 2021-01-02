@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Common\DataSource;
 
 use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
-use IceCake\AppConfigurator\Config\Exception\LoadingException;
+use IceCake\AppConfigurator\Common\Exception\LoadingException;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
 

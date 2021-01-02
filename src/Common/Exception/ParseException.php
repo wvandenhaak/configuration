@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Exception;
+namespace IceCake\AppConfigurator\Common\Exception;
 
 use RuntimeException;
 

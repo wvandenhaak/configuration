@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace IceCake\AppConfigurator\Tests\Common\DataSource;
 
 use IceCake\AppConfigurator\Common\DataSource\ArrayDataSource;
-use IceCake\AppConfigurator\Config\Exception\LoadingException;
+use IceCake\AppConfigurator\Common\Exception\LoadingException;
 use PHPUnit\Framework\TestCase;
 
 /**

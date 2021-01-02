@@ -6,7 +6,7 @@ namespace IceCake\AppConfigurator\Tests\Config\Service;
 
 use Exception;
 use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
-use IceCake\AppConfigurator\Config\Exception\WriteException;
+use IceCake\AppConfigurator\Common\Exception\WriteException;
 use IceCake\AppConfigurator\Config\Model\Config;
 use IceCake\AppConfigurator\Config\Service\Writer;
 use PHPUnit\Framework\TestCase;
