@@ -58,9 +58,9 @@ class YamlDataSourceTest extends TestCase
     {
         $this->expectException(LoadingException::class);
 
-        $nonExcistingFile = dirname(dirname(dirname(dirname(__DIR__)))) . '/data/files/non-existing-file.yaml';
+        $nonExistingFile = dirname(dirname(dirname(dirname(__DIR__)))) . '/data/files/non-existing-file.yaml';
 
-        $dataSource = new YamlDataSource($nonExcistingFile);
+        $dataSource = new YamlDataSource($nonExistingFile);
         $dataSource->validate();
     }
 

@@ -91,9 +91,34 @@ $groupParser = new GroupParser();
 $optionParser = new OptionParser();
 $loader = new Loader($groupParser, $optionParser);
 
+// Or use IceCake\AppConfigurator\Common\DataSource\DataSourceFactory
 $dataSource = new YamlDataSource('configuration-setup.yaml');
 
 $setup = $loader->load($dataSource);
+
+// $setup->get(...)
+```
+
+## Step 4: Save/write a Config to disk
+```php
+use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
+use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
+use IceCake\AppConfigurator\Common\Value\File\FolderValue;
+use IceCake\AppConfigurator\Config\Model\Config;
+use IceCake\AppConfigurator\Config\Service\Writer;
+
+$writer = new Writer();
+
+$folder = new FolderValue('path/to/directory');
+$filename = new FileNameValue('file_name', 'extension');
+
+// Or use IceCake\AppConfigurator\Common\DataStore\DataStoreFactory
+$dataStore = new ArrayDataStore($folder, $filename);
+
+// The config to save
+$config = new Config( ... ); 
+
+$writer->save($config, $dataStore);
 
 // $setup->get(...)
 ```
