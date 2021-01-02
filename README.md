@@ -33,6 +33,7 @@ options:
         key: 'key_2',
         type: 'IceCake\AppConfigurator\Common\Value\Option\ArrayType',
         choices: [value_2_1, value_2_2, value_2_3, value_2_4],
+        default: [value_2_2, value_2_4]
     }
 
     # boolean
