@@ -57,8 +57,10 @@ class LoaderTest extends TestCase
     {
         // Create correct setup array
         $setupArray = [
-            'options' => [],
-            'groups' => []
+            'setup' => [
+                'options' => [],
+                'groups' => []
+            ]
         ];
 
         $dataSouceMock = $this->createMock(YamlDataSource::class);
@@ -84,7 +86,9 @@ class LoaderTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        // Missing 'options' key
+        // Wrap data in 'setup' key
+        $data = ['setup' => $data];
+
         $dataSouceMock = $this->createMock(YamlDataSource::class);
         $dataSouceMock->method('load')
             ->willReturn($data);

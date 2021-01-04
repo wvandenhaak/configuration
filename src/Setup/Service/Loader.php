@@ -18,8 +18,9 @@ use IceCake\AppConfigurator\Setup\Service\OptionParser;
  */
 class Loader
 {
-    private const SETUP_KEY_OPTIONS = 'options';
-    private const SETUP_KEY_GROUPS = 'groups';
+    private const KEY_OPTIONS = 'options';
+    private const KEY_GROUPS = 'groups';
+    private const KEY_SETUP = 'setup';
 
     private GroupParser $groupParser;
     private OptionParser $optionParser;
@@ -51,8 +52,8 @@ class Loader
         $this->validate($setup);
 
         // Parsing
-        $options = $this->optionParser->parse($setup[self::SETUP_KEY_OPTIONS]);
-        $groups = $this->groupParser->parse($options, $setup[self::SETUP_KEY_GROUPS]);
+        $options = $this->optionParser->parse($setup[self::KEY_SETUP][self::KEY_OPTIONS]);
+        $groups = $this->groupParser->parse($options, $setup[self::KEY_SETUP][self::KEY_GROUPS]);
 
         // Create Config object
         // @todo move options array to different class so this loop can be moved (also remove getIterator mocking from PHPUnit
@@ -73,11 +74,13 @@ class Loader
      */
     private function validate(array $setup): void
     {
-        $this->validateKeyExists($setup, self::SETUP_KEY_OPTIONS);
-        $this->validateKeyIsArray($setup, self::SETUP_KEY_OPTIONS);
+        $this->validateKeyExists($setup, self::KEY_SETUP);
 
-        $this->validateKeyExists($setup, self::SETUP_KEY_GROUPS);
-        $this->validateKeyIsArray($setup, self::SETUP_KEY_GROUPS);
+        $this->validateKeyExists($setup[self::KEY_SETUP], self::KEY_OPTIONS);
+        $this->validateKeyIsArray($setup[self::KEY_SETUP], self::KEY_OPTIONS);
+
+        $this->validateKeyExists($setup[self::KEY_SETUP], self::KEY_GROUPS);
+        $this->validateKeyIsArray($setup[self::KEY_SETUP], self::KEY_GROUPS);
     }
 
     /**
