@@ -120,8 +120,6 @@ $dataStore = new ArrayDataStore($folder, $filename);
 $config = new Config( ... ); 
 
 $writer->save($config, $dataStore);
-
-// $setup->get(...)
 ```
 
 Usage
