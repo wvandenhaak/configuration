@@ -134,3 +134,8 @@ This package has two types of Configuration models
 
 **Config use cases**
 - Faster parsing time (e.g. A page which only has to show the configured values does not need the full Setup model)
+
+Documentation
+=============
+
+More documentation can be found in the ```docs``` folder.
