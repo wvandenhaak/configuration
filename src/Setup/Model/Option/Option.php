@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup\Model\Option;
+namespace Wvandenhaak\Configuration\Setup\Model\Option;
 
-use IceCake\AppConfigurator\Common\Contract\OptionValueInterface;
+use Wvandenhaak\Configuration\Common\Contract\OptionValueInterface;
 
 /**
  * Description of Option

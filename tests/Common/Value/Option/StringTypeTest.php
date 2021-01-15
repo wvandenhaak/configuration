@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Common\Value\Option;
+namespace Wvandenhaak\Configuration\Tests\Common\Value\Option;
 
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\Value\Option\StringType;
+use Wvandenhaak\Configuration\Common\Value\Option\StringType;
 use PHPUnit\Framework\TestCase;
 
 /**

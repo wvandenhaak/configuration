@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Common\DataSource;
+namespace Wvandenhaak\Configuration\Tests\Common\DataSource;
 
-use IceCake\AppConfigurator\Common\DataSource\ArrayDataSource;
-use IceCake\AppConfigurator\Common\DataSource\DataSourceFactory;
-use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Common\DataSource\ArrayDataSource;
+use Wvandenhaak\Configuration\Common\DataSource\DataSourceFactory;
+use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
 use PHPUnit\Framework\TestCase;
 
 /**

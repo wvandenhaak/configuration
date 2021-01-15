@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service;
+namespace Wvandenhaak\Configuration\Config\Service;
 
-use IceCake\AppConfigurator\Common\Exception\ParseException;
-use IceCake\AppConfigurator\Config\Model\Config;
+use Wvandenhaak\Configuration\Common\Exception\ParseException;
+use Wvandenhaak\Configuration\Config\Model\Config;
 
 /**
  * Description of Parser

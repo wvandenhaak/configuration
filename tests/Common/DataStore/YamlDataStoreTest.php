@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Common\DataStore;
+namespace Wvandenhaak\Configuration\Tests\Common\DataStore;
 
-use IceCake\AppConfigurator\Common\DataStore\YamlDataStore;
-use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
-use IceCake\AppConfigurator\Common\Value\File\FolderValue;
-use IceCake\AppConfigurator\Config\Model\Config;
+use Wvandenhaak\Configuration\Common\DataStore\YamlDataStore;
+use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
+use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
+use Wvandenhaak\Configuration\Config\Model\Config;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service;
+namespace Wvandenhaak\Configuration\Config\Service;
 
-use IceCake\AppConfigurator\Config\Model\Config;
+use Wvandenhaak\Configuration\Config\Model\Config;
 
 /**
  * The merger class allows to merge multiple Configs into a single, new, Config

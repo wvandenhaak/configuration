@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Config\Service;
+namespace Wvandenhaak\Configuration\Tests\Config\Service;
 
-use IceCake\AppConfigurator\Common\Exception\ParseException;
-use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Config\Service\Parser;
+use Wvandenhaak\Configuration\Common\Exception\ParseException;
+use Wvandenhaak\Configuration\Config\Model\Config;
+use Wvandenhaak\Configuration\Config\Service\Parser;
 use PHPUnit\Framework\TestCase;
 
 /**

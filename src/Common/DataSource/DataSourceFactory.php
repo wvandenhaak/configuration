@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Common\DataSource;
+namespace Wvandenhaak\Configuration\Common\DataSource;
 
-use IceCake\AppConfigurator\Common\DataSource\ArrayDataSource;
-use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Common\DataSource\ArrayDataSource;
+use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
 
 /**
  * @author Wesley van den haak

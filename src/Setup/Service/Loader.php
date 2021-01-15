@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup\Service;
+namespace Wvandenhaak\Configuration\Setup\Service;
 
-use IceCake\AppConfigurator\Config\Model\Config;
+use Wvandenhaak\Configuration\Config\Model\Config;
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
-use IceCake\AppConfigurator\Setup\Model\Setup;
-use IceCake\AppConfigurator\Setup\Service\GroupParser;
-use IceCake\AppConfigurator\Setup\Service\OptionParser;
+use Wvandenhaak\Configuration\Common\Contract\DataSourceInterface;
+use Wvandenhaak\Configuration\Setup\Model\Setup;
+use Wvandenhaak\Configuration\Setup\Service\GroupParser;
+use Wvandenhaak\Configuration\Setup\Service\OptionParser;
 
 /**
  * Description of Loader

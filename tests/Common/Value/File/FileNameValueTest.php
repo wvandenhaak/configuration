@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Common\Value\File;
+namespace Wvandenhaak\Configuration\Tests\Common\Value\File;
 
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
+use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Config\Service;
+namespace Wvandenhaak\Configuration\Tests\Config\Service;
 
 use Exception;
-use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
-use IceCake\AppConfigurator\Common\Exception\WriteException;
-use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Config\Service\Writer;
+use Wvandenhaak\Configuration\Common\DataStore\ArrayDataStore;
+use Wvandenhaak\Configuration\Common\Exception\WriteException;
+use Wvandenhaak\Configuration\Config\Model\Config;
+use Wvandenhaak\Configuration\Config\Service\Writer;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Model;
+namespace Wvandenhaak\Configuration\Config\Model;
 
-use IceCake\AppConfigurator\Common\Contract\ReadableConfigInterface;
+use Wvandenhaak\Configuration\Common\Contract\ReadableConfigInterface;
 
 /**
  * The config is an object which holds multiple key-value pairs

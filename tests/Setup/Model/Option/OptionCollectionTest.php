@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Setup\Model\Option;
+namespace Wvandenhaak\Configuration\Tests\Setup\Model\Option;
 
 use Traversable;
-use IceCake\AppConfigurator\Setup\Model\Option\Option;
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Model\Option\Option;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Common\Value\Option;
+namespace Wvandenhaak\Configuration\Common\Value\Option;
 
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\Contract\OptionValueInterface;
+use Wvandenhaak\Configuration\Common\Contract\OptionValueInterface;
 
 /**
  * Description of StringType

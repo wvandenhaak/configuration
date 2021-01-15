@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Common\Value\Option;
+namespace Wvandenhaak\Configuration\Tests\Common\Value\Option;
 
-use IceCake\AppConfigurator\Common\Value\Option\ArrayType;
+use Wvandenhaak\Configuration\Common\Value\Option\ArrayType;
 use PHPUnit\Framework\TestCase;
 
 /**

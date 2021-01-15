@@ -26,13 +26,13 @@ setup:
         # string
         - {
             key: 'key_1',
-            type: 'IceCake\AppConfigurator\Common\Value\Option\StringType',
+            type: 'Wvandenhaak\Configuration\Common\Value\Option\StringType',
         }
     
         # array
         - {
             key: 'key_2',
-            type: 'IceCake\AppConfigurator\Common\Value\Option\ArrayType',
+            type: 'Wvandenhaak\Configuration\Common\Value\Option\ArrayType',
             choices: [value_2_1, value_2_2, value_2_3, value_2_4],
             default: [value_2_2, value_2_4]
         }
@@ -40,21 +40,21 @@ setup:
         # boolean
         - {
             key: 'key_3',
-            type: 'IceCake\AppConfigurator\Common\Value\Option\BooleanType',
+            type: 'Wvandenhaak\Configuration\Common\Value\Option\BooleanType',
             default: false
         }
     
         # int
         - {
             key: 'key_4',
-            type: 'IceCake\AppConfigurator\Common\Value\Option\IntegerType',
+            type: 'Wvandenhaak\Configuration\Common\Value\Option\IntegerType',
         }
     
         # Custom class to retrieve option values from.
-        # Class must implement IceCake\AppConfigurator\Common\Contract\OptionProviderInterface 
+        # Class must implement Wvandenhaak\Configuration\Common\Contract\OptionProviderInterface 
         - {
           key: 'key_5',
-          provider: 'IceCake\AppConfigurator\Tests\data\classes\CustomOptionProvider'
+          provider: 'Wvandenhaak\Configuration\Tests\data\classes\CustomOptionProvider'
         }
     
     groups:
@@ -66,9 +66,9 @@ setup:
 ## Step 3: Load or Generate a Configuration
 Loading from an existing configuration file (if you already have one):
 ```php
-use IceCake\AppConfigurator\Common\DataSource\ArrayDataSource;
-use IceCake\AppConfigurator\Config\Service\Loader;
-use IceCake\AppConfigurator\Config\Service\Parser;
+use Wvandenhaak\Configuration\Common\DataSource\ArrayDataSource;
+use Wvandenhaak\Configuration\Config\Service\Loader;
+use Wvandenhaak\Configuration\Config\Service\Parser;
 
 $parser = new Parser();
 $loader = new Loader($parser);
@@ -83,16 +83,16 @@ $config = $loader->load($dataSource);
 
 Generate from setup file (from step 2):
 ```php
-use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
-use IceCake\AppConfigurator\Setup\Service\GroupParser;
-use IceCake\AppConfigurator\Setup\Service\Loader;
-use IceCake\AppConfigurator\Setup\Service\OptionParser;
+use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Setup\Service\GroupParser;
+use Wvandenhaak\Configuration\Setup\Service\Loader;
+use Wvandenhaak\Configuration\Setup\Service\OptionParser;
 
 $groupParser = new GroupParser();
 $optionParser = new OptionParser();
 $loader = new Loader($groupParser, $optionParser);
 
-// Or use IceCake\AppConfigurator\Common\DataSource\DataSourceFactory
+// Or use Wvandenhaak\Configuration\Common\DataSource\DataSourceFactory
 $dataSource = new YamlDataSource('configuration-setup.yaml');
 
 $setup = $loader->load($dataSource);
@@ -102,18 +102,18 @@ $setup = $loader->load($dataSource);
 
 ## Step 4: Save/write a Config to disk
 ```php
-use IceCake\AppConfigurator\Common\DataStore\ArrayDataStore;
-use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
-use IceCake\AppConfigurator\Common\Value\File\FolderValue;
-use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Config\Service\Writer;
+use Wvandenhaak\Configuration\Common\DataStore\ArrayDataStore;
+use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
+use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
+use Wvandenhaak\Configuration\Config\Model\Config;
+use Wvandenhaak\Configuration\Config\Service\Writer;
 
 $writer = new Writer();
 
 $folder = new FolderValue('path/to/directory');
 $filename = new FileNameValue('file_name', 'extension');
 
-// Or use IceCake\AppConfigurator\Common\DataStore\DataStoreFactory
+// Or use Wvandenhaak\Configuration\Common\DataStore\DataStoreFactory
 $dataStore = new ArrayDataStore($folder, $filename);
 
 // The config to save

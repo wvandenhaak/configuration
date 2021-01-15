@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Common\DataStore;
+namespace Wvandenhaak\Configuration\Common\DataStore;
 
-use IceCake\AppConfigurator\Common\Contract\DataStoreInterface;
-use IceCake\AppConfigurator\Common\Value\File\FileNameValue;
-use IceCake\AppConfigurator\Common\Value\File\FolderValue;
-use IceCake\AppConfigurator\Config\Model\Config;
+use Wvandenhaak\Configuration\Common\Contract\DataStoreInterface;
+use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
+use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
+use Wvandenhaak\Configuration\Config\Model\Config;
 use Symfony\Component\Yaml\Yaml;
 
 /**

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Config\Service;
+namespace Wvandenhaak\Configuration\Tests\Config\Service;
 
-use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Config\Service\Merger;
+use Wvandenhaak\Configuration\Config\Model\Config;
+use Wvandenhaak\Configuration\Config\Service\Merger;
 use PHPUnit\Framework\TestCase;
 
 /**

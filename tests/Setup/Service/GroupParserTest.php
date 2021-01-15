@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Setup\Service;
+namespace Wvandenhaak\Configuration\Tests\Setup\Service;
 
-use IceCake\AppConfigurator\Setup\Model\Option\Option;
+use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
-use IceCake\AppConfigurator\Setup\Service\GroupParser;
+use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Service\GroupParser;
 use PHPUnit\Framework\TestCase;
 
 /**

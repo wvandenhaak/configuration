@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\data\classes;
+namespace Wvandenhaak\Configuration\Tests\data\classes;
 
 /**
  * @author Wesley van den haak
@@ -10,5 +10,5 @@ namespace IceCake\AppConfigurator\Tests\data\classes;
 class InvalidCustomOptionProvider
 {
     // This OptionProvider class is invalid as it does not implement the
-    // IceCake\AppConfigurator\Common\Contract\OptionProviderInterface interface
+    // Wvandenhaak\Configuration\Common\Contract\OptionProviderInterface interface
 }

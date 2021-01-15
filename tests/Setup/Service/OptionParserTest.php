@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Setup\Service;
+namespace Wvandenhaak\Configuration\Tests\Setup\Service;
 
-use IceCake\AppConfigurator\Common\Value\Option\ArrayType;
-use IceCake\AppConfigurator\Tests\data\classes\CustomOptionProvider;
-use IceCake\AppConfigurator\Tests\data\classes\InvalidCustomOptionProvider;
+use Wvandenhaak\Configuration\Common\Value\Option\ArrayType;
+use Wvandenhaak\Configuration\Tests\data\classes\CustomOptionProvider;
+use Wvandenhaak\Configuration\Tests\data\classes\InvalidCustomOptionProvider;
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\Value\Option\StringType;
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
-use IceCake\AppConfigurator\Setup\Service\OptionParser;
+use Wvandenhaak\Configuration\Common\Value\Option\StringType;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Service\OptionParser;
 use PHPUnit\Framework\TestCase;
 
 /**

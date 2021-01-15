@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service;
+namespace Wvandenhaak\Configuration\Config\Service;
 
 use Exception;
-use IceCake\AppConfigurator\Common\Contract\DataStoreInterface;
-use IceCake\AppConfigurator\Common\Exception\WriteException;
-use IceCake\AppConfigurator\Config\Model\Config;
+use Wvandenhaak\Configuration\Common\Contract\DataStoreInterface;
+use Wvandenhaak\Configuration\Common\Exception\WriteException;
+use Wvandenhaak\Configuration\Config\Model\Config;
 
 /**
  * Description of Writer

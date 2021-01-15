@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup\Model\Option;
+namespace Wvandenhaak\Configuration\Setup\Model\Option;
 
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Traversable;
-use IceCake\AppConfigurator\Setup\Model\Option\Option;
+use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 
 /**
  * A collection of multiple Option objects

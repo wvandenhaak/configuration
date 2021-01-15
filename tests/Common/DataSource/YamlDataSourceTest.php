@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Common\DataSource;
+namespace Wvandenhaak\Configuration\Tests\Common\DataSource;
 
-use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
-use IceCake\AppConfigurator\Common\Exception\LoadingException;
+use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Common\Exception\LoadingException;
 use PHPUnit\Framework\TestCase;
 
 /**

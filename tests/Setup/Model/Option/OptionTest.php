@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Setup\Model\Option;
+namespace Wvandenhaak\Configuration\Tests\Setup\Model\Option;
 
-use IceCake\AppConfigurator\Common\Value\Option\StringType;
-use IceCake\AppConfigurator\Setup\Model\Option\Option;
+use Wvandenhaak\Configuration\Common\Value\Option\StringType;
+use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 use PHPUnit\Framework\TestCase;
 
 /**

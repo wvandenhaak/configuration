@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Setup\Model;
+namespace Wvandenhaak\Configuration\Tests\Setup\Model;
 
-use IceCake\AppConfigurator\Common\Value\Option\StringType;
-use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
-use IceCake\AppConfigurator\Setup\Model\Option\Option;
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
-use IceCake\AppConfigurator\Setup\Model\Setup;
+use Wvandenhaak\Configuration\Common\Value\Option\StringType;
+use Wvandenhaak\Configuration\Config\Model\Config;
+use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
+use Wvandenhaak\Configuration\Setup\Model\Option\Option;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Model\Setup;
 use PHPUnit\Framework\TestCase;
 
 /**

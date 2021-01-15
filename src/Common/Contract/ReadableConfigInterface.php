@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Common\Contract;
+namespace Wvandenhaak\Configuration\Common\Contract;
 
 /**
  *

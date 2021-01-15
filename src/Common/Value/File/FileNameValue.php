@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Common\Value\File;
+namespace Wvandenhaak\Configuration\Common\Value\File;
 
 use InvalidArgumentException;
 

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup\Service;
+namespace Wvandenhaak\Configuration\Setup\Service;
 
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\Contract\OptionProviderInterface;
-use IceCake\AppConfigurator\Setup\Model\Option\Option;
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Common\Contract\OptionProviderInterface;
+use Wvandenhaak\Configuration\Setup\Model\Option\Option;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 
 /**
  * Description of OptionParser

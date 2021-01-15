@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup\Model;
+namespace Wvandenhaak\Configuration\Setup\Model;
 
-use IceCake\AppConfigurator\Common\Contract\ReadableConfigInterface;
-use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Common\Contract\ReadableConfigInterface;
+use Wvandenhaak\Configuration\Config\Model\Config;
+use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 
 /**
  * Description of Setup

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Setup\Model\Group;
+namespace Wvandenhaak\Configuration\Tests\Setup\Model\Group;
 
 use Traversable;
-use IceCake\AppConfigurator\Setup\Model\Group\Group;
-use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
+use Wvandenhaak\Configuration\Setup\Model\Group\Group;
+use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
 use PHPUnit\Framework\TestCase;
 
 /**

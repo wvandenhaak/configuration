@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Common\Contract;
+namespace Wvandenhaak\Configuration\Common\Contract;
 
-use IceCake\AppConfigurator\Config\Model\Config;
+use Wvandenhaak\Configuration\Config\Model\Config;
 
 /**
  *

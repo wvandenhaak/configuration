@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Setup\Service;
+namespace Wvandenhaak\Configuration\Tests\Setup\Service;
 
 use ArrayIterator;
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
-use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
-use IceCake\AppConfigurator\Setup\Model\Setup;
-use IceCake\AppConfigurator\Setup\Service\GroupParser;
-use IceCake\AppConfigurator\Setup\Service\Loader;
-use IceCake\AppConfigurator\Setup\Service\OptionParser;
+use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Model\Setup;
+use Wvandenhaak\Configuration\Setup\Service\GroupParser;
+use Wvandenhaak\Configuration\Setup\Service\Loader;
+use Wvandenhaak\Configuration\Setup\Service\OptionParser;
 use PHPUnit\Framework\TestCase;
 
 /**

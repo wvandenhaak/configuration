@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\Config\Service;
+namespace Wvandenhaak\Configuration\Tests\Config\Service;
 
-use IceCake\AppConfigurator\Common\DataSource\YamlDataSource;
-use IceCake\AppConfigurator\Config\Model\Config;
-use IceCake\AppConfigurator\Config\Service\Loader;
-use IceCake\AppConfigurator\Config\Service\Parser;
+use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Config\Model\Config;
+use Wvandenhaak\Configuration\Config\Service\Loader;
+use Wvandenhaak\Configuration\Config\Service\Parser;
 use PHPUnit\Framework\TestCase;
 
 /**

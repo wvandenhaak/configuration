@@ -14,14 +14,14 @@
     },
     "autoload": {
         "psr-4": {
-            "IceCake\\AppConfigurator\\": "src/",
-            "IceCake\\AppConfigurator\\Tests\\": "tests/"
+            "Wvandenhaak\\Configuration\\": "src/",
+            "Wvandenhaak\\Configuration\\Tests\\": "tests/"
         }
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit --coverage-html coverage/"
     }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup\Model\Group;
+namespace Wvandenhaak\Configuration\Setup\Model\Group;
 
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 
 /**
  * Description of Group

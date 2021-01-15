@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup\Service;
+namespace Wvandenhaak\Configuration\Setup\Service;
 
 use InvalidArgumentException;
-use IceCake\AppConfigurator\Setup\Model\Group\Group;
-use IceCake\AppConfigurator\Setup\Model\Group\GroupCollection;
-use IceCake\AppConfigurator\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Model\Group\Group;
+use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
+use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 
 /**
  * Description of GroupParser

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Setup\Model\Group;
+namespace Wvandenhaak\Configuration\Setup\Model\Group;
 
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Traversable;
-use IceCake\AppConfigurator\Setup\Model\Group\Group;
+use Wvandenhaak\Configuration\Setup\Model\Group\Group;
 
 /**
  * A collection of multiple Group objects

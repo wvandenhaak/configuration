@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Config\Service;
+namespace Wvandenhaak\Configuration\Config\Service;
 
-use IceCake\AppConfigurator\Common\Contract\DataSourceInterface;
-use IceCake\AppConfigurator\Config\Model\Config;
+use Wvandenhaak\Configuration\Common\Contract\DataSourceInterface;
+use Wvandenhaak\Configuration\Config\Model\Config;
 
 /**
  * Description of Loader

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace IceCake\AppConfigurator\Tests\data\classes;
+namespace Wvandenhaak\Configuration\Tests\data\classes;
 
-use IceCake\AppConfigurator\Common\Contract\OptionProviderInterface;
-Use IceCake\AppConfigurator\Common\Contract\OptionValueInterface;
-use IceCake\AppConfigurator\Common\Value\Option\StringType;
+use Wvandenhaak\Configuration\Common\Contract\OptionProviderInterface;
+Use Wvandenhaak\Configuration\Common\Contract\OptionValueInterface;
+use Wvandenhaak\Configuration\Common\Value\Option\StringType;
 
 /**
  * @author Wesley van den haak
