@@ -66,12 +66,10 @@ class GroupParser
             $option = $optionCollection->findOption($key);
 
             if (!$option) {
-                $message = sprintf(
+                throw new InvalidArgumentException(sprintf(
                     "Option for key '%s' does not exist.",
                     $key
-                );
-
-                throw new InvalidArgumentException($message);
+                ));
             }
 
             $options->append($option);
@@ -98,12 +96,10 @@ class GroupParser
         }
 
         if (is_array($group[self::KEY_KEYS]) === false) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "Group '%s' is missing an array of keys.",
                 $group[self::KEY_NAME]
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
     }
 }

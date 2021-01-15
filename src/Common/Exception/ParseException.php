@@ -13,5 +13,4 @@ use RuntimeException;
  */
 class ParseException extends RuntimeException
 {
-    //put your code here
 }

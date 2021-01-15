@@ -43,8 +43,7 @@ class FolderValue
         $folder = trim($folder);
 
         if (empty($folder)) {
-            $message = 'Folder may not be empty.';
-            throw new InvalidArgumentException($message);
+            throw new InvalidArgumentException('Folder may not be empty.');
         }
 
         // Strip trailing directory separator

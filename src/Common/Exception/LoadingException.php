@@ -13,5 +13,4 @@ use RuntimeException;
  */
 class LoadingException extends RuntimeException
 {
-    //put your code here
 }

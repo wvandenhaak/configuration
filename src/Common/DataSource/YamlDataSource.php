@@ -33,27 +33,21 @@ class YamlDataSource implements DataSourceInterface
      */
     public function validate(): void
     {
-        $message = null;
-
         if (!is_file($this->filename)) {
-            $message = sprintf(
+            throw new LoadingException(sprintf(
                 'File "%s" does not exist.',
                 $this->filename
-            );
+            ));
         }
 
         if (!is_readable($this->filename)) {
-            $message = sprintf(
+            throw new LoadingException(sprintf(
                 'File "%s" is not readable.',
                 $this->filename
-            );
+            ));
         }
 
         // @todo more checks before requiring?
-
-        if ($message) {
-            throw new LoadingException($message);
-        }
     }
 
     /**

@@ -50,8 +50,7 @@ class FileNameValue
         $filename = trim($filename);
         
         if (empty($filename)) {
-            $message = 'Filename may not be empty.';
-            throw new InvalidArgumentException($message);
+            throw new InvalidArgumentException('Filename may not be empty.');
         }
         
         // Use pathinfo() to parse the file name in case a filepath is given.
@@ -60,12 +59,10 @@ class FileNameValue
         $pathInfo = pathinfo($filename);
 
         if (empty($pathInfo['filename'])) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "Failed to parse filename from value (%s).",
                 $filename
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
 
         $this->fileName = $pathInfo['filename'];
@@ -82,8 +79,7 @@ class FileNameValue
         $extension = trim($extension);
         
         if (empty($extension)) {
-            $message = 'File extension may not be empty.';
-            throw new InvalidArgumentException($message);
+            throw new InvalidArgumentException('File extension may not be empty.');
         }
 
         // Strip leading . (dot)

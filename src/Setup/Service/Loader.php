@@ -96,12 +96,10 @@ class Loader
             return;
         }
 
-        $message = sprintf(
+        throw new InvalidArgumentException(sprintf(
             "The configuration file is missing the '%s' property.",
             $key
-        );
-
-        throw new InvalidArgumentException($message);
+        ));
     }
 
 
@@ -118,11 +116,9 @@ class Loader
             return;
         }
 
-        $message = sprintf(
+        throw new InvalidArgumentException(sprintf(
             "The %s property must be an array.",
             $key
-        );
-
-        throw new InvalidArgumentException($message);
+        ));
     }
 }

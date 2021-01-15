@@ -41,8 +41,7 @@ class StringType implements OptionValueInterface
     private function setValue(string $value): void
     {
         if (empty($value)) {
-            $message = "Value cannot be empty.";
-            throw new InvalidArgumentException($message);
+            throw new InvalidArgumentException("Value cannot be empty.");
         }
 
         $this->value = $value;

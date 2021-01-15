@@ -105,43 +105,35 @@ class OptionParser
     {
         // Check if option has a value key and the contents are not empty.
         if (empty($option[self::KEY_KEY])) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "Option missing required '%s' property.",
                 self::KEY_KEY
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
 
         // Check if an valid option type class is given
         if (empty($option[self::KEY_TYPE])) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "Option missing required '%s' property.",
                 self::KEY_TYPE
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
 
         // Check if given class exists
         if(class_exists($option[self::KEY_TYPE]) === false) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "Option type class %s does not exist.",
                 $option[self::KEY_TYPE]
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
 
         // Check if option has a list of choices
         if (isset($option[self::KEY_CHOICES]) && !is_array($option[self::KEY_CHOICES])) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "%s for option with key %s must be an array.",
                 ucfirst(self::KEY_CHOICES),
                 $option[self::KEY_KEY]
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
     }
 
@@ -156,45 +148,37 @@ class OptionParser
     {
         // Check if option has a value key and the contents are not empty.
         if (empty($option[self::KEY_KEY])) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "Option missing required '%s' property.",
                 self::KEY_KEY
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
 
         if (empty($option[self::KEY_PROVIDER])) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "'%s' property may noy be empty.",
                 self::KEY_PROVIDER
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
 
         $className = $option[self::KEY_PROVIDER];
 
         // Check if given class exists
         if(class_exists($className) === false) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "OptionProvider class %s does not exist.",
                 $className
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
 
         // Check if class implements the OptionProviderInterface
         $interfaces = class_implements($className);
         if (in_array(OptionProviderInterface::class, $interfaces) === false) {
-            $message = sprintf(
+            throw new InvalidArgumentException(sprintf(
                 "OptionProvider class %s does not implement the required interface '%s'.",
                 $className,
                 OptionProviderInterface::class
-            );
-
-            throw new InvalidArgumentException($message);
+            ));
         }
     }
 }
