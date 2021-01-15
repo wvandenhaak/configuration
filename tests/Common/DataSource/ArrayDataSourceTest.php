@@ -56,11 +56,12 @@ class ArrayDataSourceTest extends TestCase
      */
     public function testThrowsLoadingException(): void
     {
+
         $this->expectException(LoadingException::class);
 
-        $nonExcistingFile = dirname(dirname(dirname(dirname(__DIR__)))) . '/data/files/non-existing-file.php';
+        $nonExistingFile = dirname(dirname(dirname(dirname(__DIR__)))) . '/data/files/non-existing-file.php';
 
-        $dataSource = new ArrayDataSource($nonExcistingFile);
+        $dataSource = new ArrayDataSource($nonExistingFile);
         $dataSource->validate();
     }
 
