@@ -1,5 +1,5 @@
 {
-    "name": "icecake/app-configurator",
+    "name": "wvandenhaak/configuration",
     "description": "A package which allows to create configuration variables for use in your application",
     "type": "project",
     "authors": [
