@@ -1,9 +1,9 @@
-wvandenhaak/app-configurator
+wvandenhaak/configuration
 ============================
 
 This package provides simple-to-use (custom)configuration files.
 
-[![PHPUnit](https://github.com/wvandenhaak/app-configurator/workflows/PHPUnit/badge.svg)](https://github.com/wvandenhaak/app-configurator/actions)
+![PHPUnit](https://github.com/wvandenhaak/configuration/workflows/PHPUnit/badge.svg)
 
 Installation
 ============
