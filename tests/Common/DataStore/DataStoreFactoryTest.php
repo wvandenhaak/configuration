@@ -7,9 +7,8 @@ namespace Wvandenhaak\Configuration\Tests\Common\DataStore;
 use Wvandenhaak\Configuration\Common\DataStore\ArrayDataStore;
 use Wvandenhaak\Configuration\Common\DataStore\DataStoreFactory;
 use Wvandenhaak\Configuration\Common\DataStore\YamlDataStore;
-use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
-use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
 use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 
 /**
  * Description of DataStoreFactoryTest
@@ -19,8 +18,7 @@ use PHPUnit\Framework\TestCase;
 class DataStoreFactoryTest extends TestCase
 {
 
-    private FolderValue $folder;
-    private FileNameValue $filename;
+    private FilePathValue $filepathMock;
     private DataStoreFactory $subject;
 
     /**
@@ -28,16 +26,17 @@ class DataStoreFactoryTest extends TestCase
      */
     public function setUp(): void
     {
-        $filename = $this->createMock(FileNameValue::class);
-        $filename->method('getValue')
-            ->willReturn('unittest-array-datastore.php'); // PHP file type is not valid for some DataSource classes. Does not matter for testing
+        // PHP file type is not valid for some DataSource classes. Does not matter for testing
+        $filepath = dirname(dirname(__DIR__)) . '/data/files/unittest-array-datastore.php';
 
-        $folder = $this->createMock(FolderValue::class);
-        $folder->method('getValue')
-            ->willReturn(dirname(dirname(__DIR__)) . '/data/files/');
+        $filepathMock = $this->getMockBuilder(FilePathValue::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
-        $this->folder = $folder;
-        $this->filename = $filename;
+        $filepathMock->method('getValue')
+            ->willReturn($filepath);
+
+        $this->filepathMock = $filepathMock;
 
         $this->subject = new DataStoreFactory();
     }
@@ -48,7 +47,7 @@ class DataStoreFactoryTest extends TestCase
      */
     public function testCanCreateArrayDataStore(): void
     {
-        $actual = $this->subject->createArrayDataStore($this->folder, $this->filename);
+        $actual = $this->subject->createArrayDataStore($this->filepathMock);
 
         $this->assertInstanceOf(ArrayDataStore::class, $actual);
     }
@@ -59,7 +58,7 @@ class DataStoreFactoryTest extends TestCase
      */
     public function testCanCreateYamlDataStore(): void
     {
-        $actual = $this->subject->createYamlDataStore($this->folder, $this->filename);
+        $actual = $this->subject->createYamlDataStore($this->filepathMock);
 
         $this->assertInstanceOf(YamlDataStore::class, $actual);
 

@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Tests\Common\DataStore;
 
 use Wvandenhaak\Configuration\Common\DataStore\ArrayDataStore;
-use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
-use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Config\Model\Config;
 use PHPUnit\Framework\TestCase;
 
@@ -18,26 +17,24 @@ use PHPUnit\Framework\TestCase;
 class ArrayDataStoreTest extends TestCase
 {
 
-    private FolderValue $folder;
-    private FileNameValue $filename;
-    private string $fullPath;
+    private FilePathValue $filepathMock;
+    private string $filepath;
 
     /**
      * @return void
      */
     public function setUp(): void
     {
-        $filename = $this->createMock(FileNameValue::class);
-        $filename->method('getValue')
-            ->willReturn('unittest-array-datastore.php');
+        $this->filepath = dirname(dirname(__DIR__)) . '/data/files/unittest-array-datastore.php';
 
-        $folder = $this->createMock(FolderValue::class);
-        $folder->method('getValue')
-            ->willReturn(dirname(dirname(__DIR__)) . '/data/files/');
+        $filepathMock = $this->getMockBuilder(FilePathValue::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
-        $this->folder = $folder;
-        $this->filename = $filename;
-        $this->fullPath = $this->folder->getValue() . DIRECTORY_SEPARATOR . $this->filename->getValue();
+        $filepathMock->method('getValue')
+            ->willReturn($this->filepath);
+
+        $this->filepathMock = $filepathMock;
     }
 
     /**
@@ -46,8 +43,8 @@ class ArrayDataStoreTest extends TestCase
     public function tearDown(): void
     {
         // Clean up created file
-        if (file_exists($this->fullPath)) {
-            unlink($this->fullPath);
+        if (file_exists($this->filepath)) {
+            unlink($this->filepath);
         }
     }
 
@@ -58,17 +55,17 @@ class ArrayDataStoreTest extends TestCase
     public function testCanSave(): void
     {
         $config = $this->getMockBuilder(Config::class)
-                ->disableOriginalConstructor()
-                ->getMock();
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $config->expects($this->once())
-                ->method('getAll')
-                ->willReturn([]);
+            ->method('getAll')
+            ->willReturn([]);
 
-        $dataStore = new ArrayDataStore($this->folder, $this->filename);
+        $dataStore = new ArrayDataStore($this->filepathMock);
         $dataStore->save($config);
 
-        $this->assertFileExists($this->fullPath);
+        $this->assertFileExists($this->filepath);
     }
 
 }

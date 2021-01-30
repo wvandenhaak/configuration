@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Common\DataStore;
 
 use Wvandenhaak\Configuration\Common\Contract\DataStoreInterface;
-use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
-use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Config\Model\Config;
 use Symfony\Component\Yaml\Yaml;
 
@@ -18,20 +17,14 @@ use Symfony\Component\Yaml\Yaml;
 class YamlDataStore implements DataStoreInterface
 {
 
-    private FolderValue $folder;
-    private FileNameValue $filename;
+    private FilePathValue $filePath;
 
     /**
-     * @param FolderValue $folder
-     * @param FileNameValue $filename
+     * @param FilePathValue $filePath
      */
-    public function __construct(
-        FolderValue $folder,
-        FileNameValue $filename
-    )
+    public function __construct(FilePathValue $filePath)
     {
-        $this->folder = $folder;
-        $this->filename = $filename;
+        $this->filePath = $filePath;
     }
 
     /**
@@ -40,15 +33,13 @@ class YamlDataStore implements DataStoreInterface
      */
     public function save(Config $config): void
     {
-        $fullFileName = $this->folder->getValue() . DIRECTORY_SEPARATOR . $this->filename->getValue();
-
         // Create file contents
         $fileContents = Yaml::dump([
             Config::KEY => $config->getAll()
         ]);
 
         // Write file
-        file_put_contents($fullFileName, $fileContents);
+        file_put_contents($this->filePath->getValue(), $fileContents);
     }
 
 }
