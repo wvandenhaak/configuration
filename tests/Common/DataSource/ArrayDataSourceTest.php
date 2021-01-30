@@ -4,26 +4,32 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Common\DataSource;
 
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\DataSource\ArrayDataSource;
 use Wvandenhaak\Configuration\Common\Exception\LoadingException;
-use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 
 /**
  * Description of ArrayDataSourceTest
- *
- * @author Wesley van den haak
  */
 class ArrayDataSourceTest extends TestCase
 {
 
-    private string $filename;
+    private FilePathValue $filePath;
 
     /**
      * @return void
      */
     public function setup(): void
     {
-        $this->filename = dirname(dirname(__DIR__)) . '/data/files/test-configuration.php';
+        $filePath = $this->getMockBuilder(FilePathValue::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $filePath->method('getValue')
+            ->willReturn(dirname(dirname(__DIR__)) . '/data/files/test-configuration.php');
+
+        $this->filePath = $filePath;
     }
 
     /**
@@ -32,7 +38,7 @@ class ArrayDataSourceTest extends TestCase
      */
     public function testCanLoad(): void
     {
-        $dataSource = new ArrayDataSource($this->filename);
+        $dataSource = new ArrayDataSource($this->filePath);
 
         $actual = $dataSource->load();
         $this->assertIsArray($actual);
@@ -45,7 +51,7 @@ class ArrayDataSourceTest extends TestCase
     public function testCanValidate(): void
     {
 
-        $dataSource = new ArrayDataSource($this->filename);
+        $dataSource = new ArrayDataSource($this->filePath);
 
         $this->assertNull($dataSource->validate());
     }
@@ -59,9 +65,14 @@ class ArrayDataSourceTest extends TestCase
 
         $this->expectException(LoadingException::class);
 
-        $nonExistingFile = dirname(dirname(dirname(dirname(__DIR__)))) . '/data/files/non-existing-file.php';
+        $filePath = $this->getMockBuilder(FilePathValue::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
-        $dataSource = new ArrayDataSource($nonExistingFile);
+        $filePath->method('getValue')
+            ->willReturn('path/to/not/existing/file.php');
+
+        $dataSource = new ArrayDataSource($filePath);
         $dataSource->validate();
     }
 

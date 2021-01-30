@@ -6,28 +6,29 @@ namespace Wvandenhaak\Configuration\Common\DataSource;
 
 use Wvandenhaak\Configuration\Common\DataSource\ArrayDataSource;
 use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 
 /**
- * @author Wesley van den haak
+ * An factory for creating datasources
  */
 class DataSourceFactory
 {
 
     /**
-     * @param string $filename
+     * @param FilePathValue $filePath
      * @return ArrayDataSource
      */
-    public function createArrayDataSource(string $filename): ArrayDataSource
+    public function createArrayDataSource(FilePathValue $filePath): ArrayDataSource
     {
-        return new ArrayDataSource($filename);
+        return new ArrayDataSource($filePath);
     }
 
     /**
-     * @param string $filename
+     * @param FilePathValue $filePath
      * @return YamlDataSource
      */
-    public function createYamlDataSource(string $filename): YamlDataSource
+    public function createYamlDataSource(FilePathValue $filePath): YamlDataSource
     {
-        return new YamlDataSource($filename);
+        return new YamlDataSource($filePath);
     }
 }

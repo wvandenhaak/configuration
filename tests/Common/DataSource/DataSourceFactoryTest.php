@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Common\DataSource;
 
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\DataSource\ArrayDataSource;
 use Wvandenhaak\Configuration\Common\DataSource\DataSourceFactory;
 use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
-use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 
 /**
  * Description of DataSourceFactoryTest
- *
- * @author Wesley van den haak
  */
 class DataSourceFactoryTest extends TestCase
 {
 
-    private string $filename;
+    private FilePathValue $filePath;
     private DataSourceFactory $subject;
 
     /**
@@ -25,8 +24,9 @@ class DataSourceFactoryTest extends TestCase
      */
     public function setup(): void
     {
-        // @todo make correct files. PHP file type is not valid for some DataSource classes
-        $this->filename = dirname(dirname(__DIR__)) . '/data/files/test-configuration.php';
+        $this->filePath = $this->getMockBuilder(FilePathValue::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $this->subject = new DataSourceFactory();
     }
@@ -37,7 +37,7 @@ class DataSourceFactoryTest extends TestCase
      */
     public function testCanCreateArrayDataSource(): void
     {
-        $actual = $this->subject->createArrayDataSource($this->filename);
+        $actual = $this->subject->createArrayDataSource($this->filePath);
 
         $this->assertInstanceOf(ArrayDataSource::class, $actual);
     }
@@ -48,7 +48,7 @@ class DataSourceFactoryTest extends TestCase
      */
     public function testCanCreateYamlDataSource(): void
     {
-        $actual = $this->subject->createYamlDataSource($this->filename);
+        $actual = $this->subject->createYamlDataSource($this->filePath);
 
         $this->assertInstanceOf(YamlDataSource::class, $actual);
     }

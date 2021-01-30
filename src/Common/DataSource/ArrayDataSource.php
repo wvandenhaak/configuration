@@ -7,23 +7,22 @@ namespace Wvandenhaak\Configuration\Common\DataSource;
 use Exception;
 use Wvandenhaak\Configuration\Common\Contract\DataSourceInterface;
 use Wvandenhaak\Configuration\Common\Exception\LoadingException;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 
 /**
  * Loads an (returned) array from a PHP file
- *
- * @author Wesley van den haak
  */
 class ArrayDataSource implements DataSourceInterface
 {
-    
-    private string $filename;
+
+    private FilePathValue $filePath;
 
     /**
-     * @param string $filename
+     * @param FilePathValue $filePath
      */
-    public function __construct(string $filename)
+    public function __construct(FilePathValue $filePath)
     {
-        $this->filename = $filename;
+        $this->filePath = $filePath;
     }
 
     /**
@@ -32,17 +31,19 @@ class ArrayDataSource implements DataSourceInterface
      */
     public function validate(): void
     {
-        if (!is_file($this->filename)) {
+        $filepath = $this->filePath->getValue();
+
+        if (!is_file($filepath)) {
             throw new LoadingException(sprintf(
-                    'File "%s" does not exist.',
-                    $this->filename
+                'File "%s" does not exist.',
+                $filepath
             ));
         }
 
-        if (!is_readable($this->filename)) {
+        if (!is_readable($filepath)) {
             throw new LoadingException(sprintf(
-                    'File "%s" is not readable.',
-                    $this->filename
+                'File "%s" is not readable.',
+                $filepath
             ));
         }
 
@@ -56,7 +57,7 @@ class ArrayDataSource implements DataSourceInterface
     public function load(): array
     {
         try {
-            $configuration = require $this->filename;
+            $configuration = require $this->filePath->getValue();
         } catch (Exception $ex) {
             throw new LoadingException($ex->getMessage());
         }

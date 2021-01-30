@@ -4,26 +4,32 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Common\DataSource;
 
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
 use Wvandenhaak\Configuration\Common\Exception\LoadingException;
-use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 
 /**
  * Description of YamlDataSourceTest
- *
- * @author Wesley van den haak
  */
 class YamlDataSourceTest extends TestCase
 {
 
-    private string $filename;
+    private FilePathValue $filePath;
 
     /**
      * @return void
      */
     public function setup(): void
     {
-        $this->filename = dirname(dirname(__DIR__)) . '/data/files/test-configuration.yaml';
+        $filePath = $this->getMockBuilder(FilePathValue::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $filePath->method('getValue')
+            ->willReturn(dirname(dirname(__DIR__)) . '/data/files/test-configuration.yaml');
+
+        $this->filePath = $filePath;
     }
 
     /**
@@ -32,7 +38,7 @@ class YamlDataSourceTest extends TestCase
      */
     public function testCanLoad(): void
     {
-        $dataSource = new YamlDataSource($this->filename);
+        $dataSource = new YamlDataSource($this->filePath);
 
         $actual = $dataSource->load();
         $this->assertIsArray($actual);
@@ -45,7 +51,7 @@ class YamlDataSourceTest extends TestCase
     public function testCanValidate(): void
     {
 
-        $dataSource = new YamlDataSource($this->filename);
+        $dataSource = new YamlDataSource($this->filePath);
 
         $this->assertNull($dataSource->validate());
     }
@@ -58,9 +64,14 @@ class YamlDataSourceTest extends TestCase
     {
         $this->expectException(LoadingException::class);
 
-        $nonExistingFile = dirname(dirname(dirname(dirname(__DIR__)))) . '/data/files/non-existing-file.yaml';
+        $filePath = $this->getMockBuilder(FilePathValue::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
-        $dataSource = new YamlDataSource($nonExistingFile);
+        $filePath->method('getValue')
+            ->willReturn('path/to/not/existing/file.yaml');
+
+        $dataSource = new YamlDataSource($filePath);
         $dataSource->validate();
     }
 

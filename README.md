@@ -67,13 +67,14 @@ setup:
 Loading from an existing configuration file (if you already have one):
 ```php
 use Wvandenhaak\Configuration\Common\DataSource\ArrayDataSource;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Config\Service\Loader;
 use Wvandenhaak\Configuration\Config\Service\Parser;
 
 $parser = new Parser();
 $loader = new Loader($parser);
 
-$filePath = 'configuration.php';
+$filePath = new FilePathValue('configuration.php');
 $dataSource = new ArrayDataSource($filePath);
 
 $config = $loader->load($dataSource);
@@ -84,6 +85,7 @@ $config = $loader->load($dataSource);
 Generate from setup file (from step 2):
 ```php
 use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Setup\Service\GroupParser;
 use Wvandenhaak\Configuration\Setup\Service\Loader;
 use Wvandenhaak\Configuration\Setup\Service\OptionParser;
@@ -93,7 +95,8 @@ $optionParser = new OptionParser();
 $loader = new Loader($groupParser, $optionParser);
 
 // Or use Wvandenhaak\Configuration\Common\DataSource\DataSourceFactory
-$dataSource = new YamlDataSource('configuration-setup.yaml');
+$filePath = new FilePathValue('configuration-setup.yaml');
+$dataSource = new YamlDataSource($filePath);
 
 $setup = $loader->load($dataSource);
 
@@ -103,18 +106,15 @@ $setup = $loader->load($dataSource);
 ## Step 4: Save/write a Config to disk
 ```php
 use Wvandenhaak\Configuration\Common\DataStore\ArrayDataStore;
-use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
-use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
+use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Config\Model\Config;
 use Wvandenhaak\Configuration\Config\Service\Writer;
 
 $writer = new Writer();
 
-$folder = new FolderValue('path/to/directory');
-$filename = new FileNameValue('file_name', 'extension');
-
 // Or use Wvandenhaak\Configuration\Common\DataStore\DataStoreFactory
-$dataStore = new ArrayDataStore($folder, $filename);
+$filePath = new FilePathValue('path/to/directory/file_name.php');
+$dataStore = new ArrayDataStore($filePath);
 
 // The config to save
 $config = new Config( ... ); 
