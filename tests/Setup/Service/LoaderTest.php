@@ -6,6 +6,7 @@ namespace Wvandenhaak\Configuration\Tests\Setup\Service;
 
 use ArrayIterator;
 use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
 use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
@@ -13,7 +14,6 @@ use Wvandenhaak\Configuration\Setup\Model\Setup;
 use Wvandenhaak\Configuration\Setup\Service\GroupParser;
 use Wvandenhaak\Configuration\Setup\Service\Loader;
 use Wvandenhaak\Configuration\Setup\Service\OptionParser;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of GroupParser

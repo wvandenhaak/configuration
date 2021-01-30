@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Tests\Config\Service;
 
 use Exception;
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\DataStore\ArrayDataStore;
 use Wvandenhaak\Configuration\Common\Exception\WriteException;
 use Wvandenhaak\Configuration\Config\Model\Config;
 use Wvandenhaak\Configuration\Config\Service\Writer;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of WriterTest

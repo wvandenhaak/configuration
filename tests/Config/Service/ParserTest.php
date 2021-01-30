@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Config\Service;
 
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\Exception\ParseException;
 use Wvandenhaak\Configuration\Config\Model\Config;
 use Wvandenhaak\Configuration\Config\Service\Parser;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of ParserTest

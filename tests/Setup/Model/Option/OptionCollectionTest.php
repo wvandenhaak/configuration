@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Tests\Setup\Model\Option;
 
 use Traversable;
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of OptionCollectionTest

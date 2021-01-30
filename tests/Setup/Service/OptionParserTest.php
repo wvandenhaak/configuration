@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Setup\Service;
 
+use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\Value\Option\ArrayType;
+use Wvandenhaak\Configuration\Common\Value\Option\StringType;
 use Wvandenhaak\Configuration\Tests\data\classes\CustomOptionProvider;
 use Wvandenhaak\Configuration\Tests\data\classes\InvalidCustomOptionProvider;
-use InvalidArgumentException;
-use Wvandenhaak\Configuration\Common\Value\Option\StringType;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 use Wvandenhaak\Configuration\Setup\Service\OptionParser;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of OptionParserTest

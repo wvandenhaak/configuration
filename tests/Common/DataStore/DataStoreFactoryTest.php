@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Common\DataStore;
 
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\DataStore\ArrayDataStore;
 use Wvandenhaak\Configuration\Common\DataStore\DataStoreFactory;
 use Wvandenhaak\Configuration\Common\DataStore\YamlDataStore;
-use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 
 /**

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Setup\Service;
 
-use Wvandenhaak\Configuration\Config\Model\Config;
 use InvalidArgumentException;
 use Wvandenhaak\Configuration\Common\Contract\DataSourceInterface;
+use Wvandenhaak\Configuration\Config\Model\Config;
 use Wvandenhaak\Configuration\Setup\Model\Setup;
 use Wvandenhaak\Configuration\Setup\Service\GroupParser;
 use Wvandenhaak\Configuration\Setup\Service\OptionParser;

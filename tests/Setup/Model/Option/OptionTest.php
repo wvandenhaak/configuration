@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Setup\Model\Option;
 
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\Value\Option\StringType;
 use Wvandenhaak\Configuration\Setup\Model\Option\Option;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of OptionTest

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Setup\Model\Group;
 
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Setup\Model\Group\Group;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of GroupTest

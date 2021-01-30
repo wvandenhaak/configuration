@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Tests\Setup\Model\Group;
 
 use Traversable;
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Setup\Model\Group\Group;
 use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of GroupCollectionTest

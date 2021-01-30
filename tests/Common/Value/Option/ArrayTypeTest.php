@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Common\Value\Option;
 
-use Wvandenhaak\Configuration\Common\Value\Option\ArrayType;
 use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Common\Value\Option\ArrayType;
 
 /**
  * Description of ArrayTypeTest

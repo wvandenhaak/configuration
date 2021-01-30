@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Common\DataStore;
 
+use Symfony\Component\Yaml\Yaml;
 use Wvandenhaak\Configuration\Common\Contract\DataStoreInterface;
 use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Config\Model\Config;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * Description of YamlDataStore

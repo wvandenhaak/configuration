@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Setup\Service;
 
-use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
+use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 use Wvandenhaak\Configuration\Setup\Service\GroupParser;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of GroupParserTest

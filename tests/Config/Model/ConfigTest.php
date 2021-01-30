@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Config\Model;
 
-use Wvandenhaak\Configuration\Config\Model\Config;
 use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Config\Model\Config;
 
 /**
  * Description of ConfigTest

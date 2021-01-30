@@ -16,18 +16,21 @@ class ArrayDataSourceTest extends TestCase
 {
 
     private FilePathValue $filePath;
+    private string $testFile;
 
     /**
      * @return void
      */
     public function setup(): void
     {
+        $this->testFile = dirname(dirname(__DIR__)) . '/data/files/test-configuration.php';
+
         $filePath = $this->getMockBuilder(FilePathValue::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $filePath->method('getValue')
-            ->willReturn(dirname(dirname(__DIR__)) . '/data/files/test-configuration.php');
+            ->willReturn($this->testFile);
 
         $this->filePath = $filePath;
     }
@@ -50,19 +53,17 @@ class ArrayDataSourceTest extends TestCase
      */
     public function testCanValidate(): void
     {
-
         $dataSource = new ArrayDataSource($this->filePath);
 
         $this->assertNull($dataSource->validate());
     }
 
     /**
-     * Test if the class can throw an exception
+     * Test if the class throws a LoadingException when a non-existing file is given
      * @return void
      */
-    public function testThrowsLoadingException(): void
+    public function testThrowsLoadingExceptionOnNonExistingFile(): void
     {
-
         $this->expectException(LoadingException::class);
 
         $filePath = $this->getMockBuilder(FilePathValue::class)
@@ -74,6 +75,34 @@ class ArrayDataSourceTest extends TestCase
 
         $dataSource = new ArrayDataSource($filePath);
         $dataSource->validate();
+    }
+
+    /**
+     * Test if the class throws a LoadingException when a problem occurs when loading
+     * @return void
+     */
+    public function testThrowsLoadingExceptionOnLoad(): void
+    {
+        $this->expectException(LoadingException::class);
+
+        $filePath = $this->getMockBuilder(FilePathValue::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        // The method getValue will be called twice.
+        // First time return the path. Second time return random, invalid, string.
+        $filePath
+            ->method('getValue')
+            ->will(
+                $this->onConsecutiveCalls(
+                    $this->testFile, // First call
+                    'random_string' // Second call
+                )
+            );
+
+        $dataSource = new ArrayDataSource($filePath);
+        $dataSource->validate(); // First call
+        $dataSource->load(); // Second call
     }
 
 }

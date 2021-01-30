@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Config\Service;
 
+use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
 use Wvandenhaak\Configuration\Config\Model\Config;
 use Wvandenhaak\Configuration\Config\Service\Loader;
 use Wvandenhaak\Configuration\Config\Service\Parser;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Description of LoaderTest
