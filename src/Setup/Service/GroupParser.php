@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Setup\Service;
 
-use InvalidArgumentException;
+use Wvandenhaak\Configuration\Common\Exception\ParseException;
 use Wvandenhaak\Configuration\Setup\Model\Group\Group;
 use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
@@ -53,6 +53,7 @@ class GroupParser
      * @param array $keys
      * @param OptionCollection $optionCollection
      * @return Group
+     * @throws ParseException
      */
     private function parseGroup(
         string $name,
@@ -66,7 +67,7 @@ class GroupParser
             $option = $optionCollection->findOption($key);
 
             if (!$option) {
-                throw new InvalidArgumentException(sprintf(
+                throw new ParseException(sprintf(
                     "Option for key '%s' does not exist.",
                     $key
                 ));
@@ -81,22 +82,22 @@ class GroupParser
     /**
      * @param array $group
      * @return void
-     * @throws InvalidArgumentException
+     * @throws ParseException
      * @todo: Create separate validator class
      *
      */
     private function validateGroup(array $group): void
     {
         if (empty($group[self::KEY_NAME])) {
-            throw new InvalidArgumentException("Group missing required 'name' key.");
+            throw new ParseException("Group missing required 'name' key.");
         }
 
         if (empty($group[self::KEY_KEYS])) {
-            throw new InvalidArgumentException("Group missing required 'keys' key.");
+            throw new ParseException("Group missing required 'keys' key.");
         }
 
         if (is_array($group[self::KEY_KEYS]) === false) {
-            throw new InvalidArgumentException(sprintf(
+            throw new ParseException(sprintf(
                 "Group '%s' is missing an array of keys.",
                 $group[self::KEY_NAME]
             ));
