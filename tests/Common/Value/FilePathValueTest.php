@@ -11,24 +11,17 @@ use PHPUnit\Framework\TestCase;
 class FilePathValueTest extends TestCase
 {
 
-    private string $testFilepath;
-
-    /**
-     * @return void
-     */
-    public function setUp(): void
-    {
-        $this->testFilepath =  dirname(dirname(__DIR__)) . '/data/files/test-configuration.php';
-    }
-
     /**
      * Test if the object can be created and returns the correct value without errors
+     * @dataProvider dataProviderGetValue
+     *
+     * @param string $filepath
      */
-    public function testGetValue(): void
+    public function testGetValue(string $filepath): void
     {
-        $subject = new FilePathValue($this->testFilepath);
+        $subject = new FilePathValue($filepath);
 
-        $this->assertEquals($this->testFilepath, $subject->getValue());
+        $this->assertEquals($filepath, $subject->getValue());
     }
 
     /**
@@ -59,5 +52,16 @@ class FilePathValueTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         new FilePathValue('/path/to/file/filename');
+    }
+
+    /**
+     * @return array
+     */
+    public function dataProviderGetValue(): array
+    {
+        return [
+            'Path with file and extension' =>       ['path/to/file/filename.txt'],
+            'Only a file and extension' =>          ['filename.txt']
+        ];
     }
 }
