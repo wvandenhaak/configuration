@@ -12,7 +12,7 @@ Installation
 Install this package using Composer with the following command:
 
 ```
-composer require wvandenhaak/app-configurator
+composer require wvandenhaak/configuration
 ```
 
 ## Step 2: Configuration/Setup
