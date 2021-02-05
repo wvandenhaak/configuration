@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Tests\Common\Value\Option;
 
 use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Common\Exception\InvalidArgumentException;
 use Wvandenhaak\Configuration\Common\Value\Option\ArrayType;
 
 /**
@@ -21,11 +22,22 @@ class ArrayTypeTest extends TestCase
      */
     public function testGetValue(): void
     {
-        $value = [123, 'ABC', true];
+        $values = [123, 'ABC', true];
 
-        $stringType = new ArrayType($value);
+        $arrayType = new ArrayType($values);
 
-        $this->assertSame($value, $stringType->getValue());
+        $this->assertSame($values, $arrayType->getValue());
+    }
+
+    /**
+     * Test if the class trows an exception on unsupported values
+     */
+    public function testThrowsInvalidArgumentExceptionOnUnsupportedValues(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $values = ['key1' => [1, 2, 3]];
+        new ArrayType($values);
     }
 
 }

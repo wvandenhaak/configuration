@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Common\Value\Option;
 
 use Wvandenhaak\Configuration\Common\Contract\OptionValueInterface;
+use Wvandenhaak\Configuration\Common\Exception\InvalidArgumentException;
 
 /**
  * Description of ArrayType
@@ -33,14 +34,20 @@ class ArrayType implements OptionValueInterface
     }
 
     /**
-     * @param array $value
+     * @param array $values
      * @return void
+     * @throws InvalidArgumentException
      */
-    private function setValue(array $value): void
+    private function setValue(array $values): void
     {
-        // @todo Add checks?
+        foreach($values as $value) {
+            // Multidimensional arrays are not supported
+            if (is_array($value)) {
+                throw new InvalidArgumentException('Array values are not supported.');
+            }
+        }
 
-        $this->value = $value;
+        $this->value = $values;
     }
 
 }
