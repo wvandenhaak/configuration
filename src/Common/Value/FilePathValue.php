@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Common\Value;
 
-use InvalidArgumentException;
+use Wvandenhaak\Configuration\Common\Exception\InvalidArgumentException;
 
 class FilePathValue
 {

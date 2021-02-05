@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Tests\Setup\Service;
 
 use ArrayIterator;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
+use Wvandenhaak\Configuration\Common\Exception\InvalidArgumentException;
 use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 use Wvandenhaak\Configuration\Setup\Model\Setup;

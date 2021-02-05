@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Common\Value\Option;
 
-use InvalidArgumentException;
 use Wvandenhaak\Configuration\Common\Contract\OptionValueInterface;
+use Wvandenhaak\Configuration\Common\Exception\InvalidArgumentException;
 
 /**
  * Description of StringType

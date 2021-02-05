@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Tests\Common\Value;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Common\Exception\InvalidArgumentException;
 use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 
 class FilePathValueTest extends TestCase
