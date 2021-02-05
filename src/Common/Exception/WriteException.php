@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Common\Exception;
 
-use RuntimeException;
+use Exception;
 
 /**
  * Description of WriteException
  *
  * @author Wesley van den haak
  */
-class WriteException extends RuntimeException
+class WriteException extends Exception
 {
 }
