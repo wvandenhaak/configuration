@@ -24,6 +24,7 @@ class GroupParser
      * @param OptionCollection $options
      * @param array $groups
      * @return GroupCollection
+     * @throws ParseException
      */
     public function parse(
         OptionCollection $options,
