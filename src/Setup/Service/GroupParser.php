@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Setup\Service;
 
+use Wvandenhaak\Configuration\Common\Enum\GroupEnum;
 use Wvandenhaak\Configuration\Common\Exception\ParseException;
 use Wvandenhaak\Configuration\Setup\Model\Group\Group;
 use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
@@ -16,9 +17,6 @@ use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
  */
 class GroupParser
 {
-
-    private const KEY_NAME = 'name';
-    private const KEY_KEYS = 'keys';
 
     /**
      * @param OptionCollection $options
@@ -38,8 +36,8 @@ class GroupParser
             $this->validateGroup($group);
 
             $group = $this->parseGroup(
-                $group[self::KEY_NAME],
-                $group[self::KEY_KEYS],
+                $group[GroupEnum::KEY_NAME],
+                $group[GroupEnum::KEY_KEYS],
                 $options
             );
 
@@ -89,18 +87,18 @@ class GroupParser
      */
     private function validateGroup(array $group): void
     {
-        if (empty($group[self::KEY_NAME])) {
+        if (empty($group[GroupEnum::KEY_NAME])) {
             throw new ParseException("Group missing required 'name' key.");
         }
 
-        if (empty($group[self::KEY_KEYS])) {
+        if (empty($group[GroupEnum::KEY_KEYS])) {
             throw new ParseException("Group missing required 'keys' key.");
         }
 
-        if (is_array($group[self::KEY_KEYS]) === false) {
+        if (is_array($group[GroupEnum::KEY_KEYS]) === false) {
             throw new ParseException(sprintf(
                 "Group '%s' is missing an array of keys.",
-                $group[self::KEY_NAME]
+                $group[GroupEnum::KEY_NAME]
             ));
         }
     }
