@@ -11,7 +11,7 @@ use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 use Wvandenhaak\Configuration\Setup\Service\OptionValidator;
 
 /**
- * A class to parse an array into an Option object
+ * A class to parse an array op option values into an Option object
  */
 class OptionParser
 {

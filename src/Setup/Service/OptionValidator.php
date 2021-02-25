@@ -8,6 +8,9 @@ use Wvandenhaak\Configuration\Common\Contract\OptionProviderInterface;
 use Wvandenhaak\Configuration\Common\Enum\OptionEnum;
 use Wvandenhaak\Configuration\Common\Exception\ValidationException;
 
+/**
+ * A validator to validate an array of options on required keys and values
+ */
 class OptionValidator
 {
 
