@@ -6,7 +6,8 @@
     "authors": [
         {
             "name": "Wesley van den Haak",
-            "email": "w.vandenhaak@live.nl"
+            "email": "w.vandenhaak@live.nl",
+            "role": "Developer"
         }
     ],
     "require": {
