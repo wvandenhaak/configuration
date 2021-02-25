@@ -39,8 +39,8 @@ class OptionValidatorTest extends TestCase
         $optionsArray1 = ['key' => 'key_1', 'choices' => [], 'type' => StringType::class];
         $optionsArray2 = ['key' => 'key_2', 'choices' => ['a', 'b', 'c'], 'type' => ArrayType::class, 'default' => ['d']];
 
-        $this->assertNull($this->subject->validate($optionsArray1));
-        $this->assertNull($this->subject->validate($optionsArray2));
+        $this->assertNull($this->subject->validateOption($optionsArray1));
+        $this->assertNull($this->subject->validateOption($optionsArray2));
     }
 
     /**
@@ -50,7 +50,7 @@ class OptionValidatorTest extends TestCase
     public function testCanValidateProvider(): void
     {
         $optionsArray = ['key' => 'key_3', 'provider' => CustomOptionProvider::class];
-        $this->assertNull($this->subject->validateProvider($optionsArray));
+        $this->assertNull($this->subject->validateOptionProvider($optionsArray));
     }
 
     /**
@@ -67,7 +67,7 @@ class OptionValidatorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $this->subject->validate($data);
+        $this->subject->validateOption($data);
     }
 
     /**
@@ -98,7 +98,7 @@ class OptionValidatorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $this->subject->validateProvider($data);
+        $this->subject->validateOptionProvider($data);
     }
 
     /**

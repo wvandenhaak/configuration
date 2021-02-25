@@ -40,10 +40,10 @@ class OptionParser
 
             // Validate Option or OptionProvider
             if (array_key_exists(OptionEnum::KEY_PROVIDER, $optionSettings)) {
-                $this->validator->validateProvider($optionSettings);
+                $this->validator->validateOptionProvider($optionSettings);
                 $option = $this->parseOptionProvider($optionSettings);
             } else {
-                $this->validator->validate($optionSettings);
+                $this->validator->validateOption($optionSettings);
                 $option = $this->parseOption($optionSettings);
             }
 
