@@ -5,22 +5,31 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Setup\Service;
 
 use Wvandenhaak\Configuration\Common\Enum\OptionEnum;
-use Wvandenhaak\Configuration\Common\Exception\ParseException;
-use Wvandenhaak\Configuration\Common\Contract\OptionProviderInterface;
+use Wvandenhaak\Configuration\Common\Exception\ValidationException;
 use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Service\OptionValidator;
 
 /**
- * Description of OptionParser
- *
- * @author Wesley van den haak
+ * A class to parse an array into an Option object
  */
 class OptionParser
 {
 
+    private OptionValidator $validator;
+
+    /**
+     * @param OptionValidator $validator
+     */
+    public function __construct(OptionValidator $validator)
+    {
+        $this->validator = $validator;
+    }
+
     /**
      * @param array $options
      * @return OptionCollection
+     * @throws ValidationException
      */
     public function parse(array $options): OptionCollection
     {
@@ -29,12 +38,12 @@ class OptionParser
         // Parse each option
         foreach ($options as $optionSettings) {
 
-            // Validate option or optionProvider
+            // Validate Option or OptionProvider
             if (array_key_exists(OptionEnum::KEY_PROVIDER, $optionSettings)) {
-                $this->validateOptionProvider($optionSettings);
+                $this->validator->validateProvider($optionSettings);
                 $option = $this->parseOptionProvider($optionSettings);
             } else {
-                $this->validateOption($optionSettings);
+                $this->validator->validate($optionSettings);
                 $option = $this->parseOption($optionSettings);
             }
 
@@ -89,91 +98,4 @@ class OptionParser
         );
     }
 
-    /**
-     * @todo: Create separate validator class
-     *
-     * @param array $option
-     * @return void
-     * @throws ParseException
-     */
-    private function validateOption(array $option): void
-    {
-        // Check if option has a value key and the contents are not empty.
-        if (empty($option[OptionEnum::KEY_KEY])) {
-            throw new ParseException(sprintf(
-                "Option missing required '%s' property.",
-                OptionEnum::KEY_KEY
-            ));
-        }
-
-        // Check if an valid option type class is given
-        if (empty($option[OptionEnum::KEY_TYPE])) {
-            throw new ParseException(sprintf(
-                "Option missing required '%s' property.",
-                OptionEnum::KEY_TYPE
-            ));
-        }
-
-        // Check if given class exists
-        if(class_exists($option[OptionEnum::KEY_TYPE]) === false) {
-            throw new ParseException(sprintf(
-                "Option type class %s does not exist.",
-                $option[OptionEnum::KEY_TYPE]
-            ));
-        }
-
-        // Check if option has a list of choices
-        if (isset($option[OptionEnum::KEY_CHOICES]) && !is_array($option[OptionEnum::KEY_CHOICES])) {
-            throw new ParseException(sprintf(
-                "%s for option with key %s must be an array.",
-                ucfirst(OptionEnum::KEY_CHOICES),
-                $option[OptionEnum::KEY_KEY]
-            ));
-        }
-    }
-
-    /**
-     * @todo: Create separate validator class
-     *
-     * @param array $option
-     * @return void
-     * @throws ParseException
-     */
-    private function validateOptionProvider(array $option): void
-    {
-        // Check if option has a value key and the contents are not empty.
-        if (empty($option[OptionEnum::KEY_KEY])) {
-            throw new ParseException(sprintf(
-                "Option missing required '%s' property.",
-                OptionEnum::KEY_KEY
-            ));
-        }
-
-        if (empty($option[OptionEnum::KEY_PROVIDER])) {
-            throw new ParseException(sprintf(
-                "'%s' property may noy be empty.",
-                OptionEnum::KEY_PROVIDER
-            ));
-        }
-
-        $className = $option[OptionEnum::KEY_PROVIDER];
-
-        // Check if given class exists
-        if(class_exists($className) === false) {
-            throw new ParseException(sprintf(
-                "OptionProvider class %s does not exist.",
-                $className
-            ));
-        }
-
-        // Check if class implements the OptionProviderInterface
-        $interfaces = class_implements($className);
-        if (in_array(OptionProviderInterface::class, $interfaces) === false) {
-            throw new ParseException(sprintf(
-                "OptionProvider class %s does not implement the required interface '%s'.",
-                $className,
-                OptionProviderInterface::class
-            ));
-        }
-    }
 }
