@@ -2,6 +2,7 @@
     "name": "wvandenhaak/configuration",
     "description": "A package which allows to create configuration variables for use in your application",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Wesley van den Haak",
