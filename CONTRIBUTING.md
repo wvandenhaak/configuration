@@ -20,6 +20,7 @@ The code must meet the following requirements:
 - `declare(strict_types=1)` must be used
 - Only use PHP language features above the minimum supported version (see `composer.json`)
 - Add type hints for everything (including: return types, nullable types and `void`)
+- Maintain PSR-12 coding standard 
 - Provide PHP DocBlocks for all methods
 - Declare visibility on methods, variables and properties
 - Add and update PHPUnit testcases
