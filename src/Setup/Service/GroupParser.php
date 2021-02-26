@@ -9,20 +9,28 @@ use Wvandenhaak\Configuration\Common\Exception\ParseException;
 use Wvandenhaak\Configuration\Setup\Model\Group\Group;
 use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
+use Wvandenhaak\Configuration\Setup\Service\GroupValidator;
 
 /**
  * Description of GroupParser
- *
- * @author Wesley van den haak
  */
 class GroupParser
 {
+
+    private GroupValidator $validator;
+
+    /**
+     * @param GroupValidator $validator
+     */
+    public function __construct(GroupValidator $validator)
+    {
+        $this->validator = $validator;
+    }
 
     /**
      * @param OptionCollection $options
      * @param array $groups
      * @return GroupCollection
-     * @throws ParseException
      */
     public function parse(
         OptionCollection $options,
@@ -33,7 +41,7 @@ class GroupParser
 
         // Parse each group
         foreach ($groups as $group) {
-            $this->validateGroup($group);
+            $this->validator->validateGroup($group);
 
             $group = $this->parseGroup(
                 $group[GroupEnum::KEY_NAME],
@@ -76,30 +84,5 @@ class GroupParser
         }
 
         return new Group($name, $options);
-    }
-
-    /**
-     * @param array $group
-     * @return void
-     * @throws ParseException
-     * @todo: Create separate validator class
-     *
-     */
-    private function validateGroup(array $group): void
-    {
-        if (empty($group[GroupEnum::KEY_NAME])) {
-            throw new ParseException("Group missing required 'name' key.");
-        }
-
-        if (empty($group[GroupEnum::KEY_KEYS])) {
-            throw new ParseException("Group missing required 'keys' key.");
-        }
-
-        if (is_array($group[GroupEnum::KEY_KEYS]) === false) {
-            throw new ParseException(sprintf(
-                "Group '%s' is missing an array of keys.",
-                $group[GroupEnum::KEY_NAME]
-            ));
-        }
     }
 }

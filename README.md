@@ -87,13 +87,17 @@ Generate from setup file (from step 2):
 use Wvandenhaak\Configuration\Common\DataSource\YamlDataSource;
 use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Setup\Service\GroupParser;
+use Wvandenhaak\Configuration\Setup\Service\GroupValidator;
 use Wvandenhaak\Configuration\Setup\Service\Loader;
 use Wvandenhaak\Configuration\Setup\Service\OptionParser;
 use Wvandenhaak\Configuration\Setup\Service\OptionValidator;
 
 $optionValidator = new OptionValidator();
 $optionParser = new OptionParser($optionValidator);
-$groupParser = new GroupParser();
+
+$groupValidator = new GroupValidator();
+$groupParser = new GroupParser($groupValidator);
+
 $loader = new Loader($groupParser, $optionParser);
 
 // Or use Wvandenhaak\Configuration\Common\DataSource\DataSourceFactory

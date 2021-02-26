@@ -10,11 +10,10 @@ use Wvandenhaak\Configuration\Setup\Model\Group\GroupCollection;
 use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
 use Wvandenhaak\Configuration\Setup\Service\GroupParser;
+use Wvandenhaak\Configuration\Setup\Service\GroupValidator;
 
 /**
  * Description of GroupParserTest
- *
- * @author Wesley van den haak
  */
 class GroupParserTest extends TestCase
 {
@@ -27,7 +26,8 @@ class GroupParserTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->subject = new GroupParser();
+        $validator = $this->createMock(GroupValidator::class);
+        $this->subject = new GroupParser($validator);
 
         // Mock an collection of options with 2 items
         $option1 = $this->createMock(Option::class);
@@ -76,34 +76,17 @@ class GroupParserTest extends TestCase
 
     /**
      * Test if the class throws ParseException(s) upon receiving invalid data
-     * @dataProvider dataProviderInvalidSetupContents
-     * @param array $data
-     * @param string $message
      * @return void
      */
-    public function testThrowingParseExceptions(
-        array $data,
-        string $message
-    ): void
+    public function testThrowingParseExceptions(): void
     {
         $this->expectException(ParseException::class);
 
-        // wrap data in another array because class expects array in array
-        $wrappedData = [$data];
-        $this->subject->parse($this->optionCollectionMock, $wrappedData);
-    }
-
-    /**
-     * A dataProvider which holds different invalid values in order to test the loader if exceptions will be thrown
-     * @return array
-     */
-    public function dataProviderInvalidSetupContents(): array
-    {
-        return [
-            ["data" => [],                                                  "message" => "Missing 'name' key"],
-            ["data" => ['name' => 'GroupName'],                             "message" => "Missing 'keys' key"],
-            ["data" => ['name' => 'GroupName', 'keys' => 'not_an_array'],   "message" => "Key 'keys' must be an array"],
-            ["data" => ['name' => 'GroupName', 'keys' => ['key_3']],        "message" => "Option for given key does not exist"],
+        // key_3 does not exist in the collection so an exception must be trhown
+        $data = [
+            ['name' => 'GroupName', 'keys' => ['key_3']]
         ];
+
+        $this->subject->parse($this->optionCollectionMock, $data);
     }
 }
