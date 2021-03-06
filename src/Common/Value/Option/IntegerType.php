@@ -38,8 +38,6 @@ class IntegerType implements OptionValueInterface
      */
     private function setValue(int $value): void
     {
-        // @todo Add checks?
-
         $this->value = $value;
     }
 

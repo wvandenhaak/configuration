@@ -30,8 +30,6 @@ class Parser
         }
         
         // @todo More parsing checks
-        
-        // @todo Check on duplicate keys
          
         // @todo Better parsing into config        
         

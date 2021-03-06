@@ -46,8 +46,6 @@ class ArrayDataSource implements DataSourceInterface
                 $filepath
             ));
         }
-
-        // @todo more checks before requiring?
     }
 
     /**

@@ -47,8 +47,6 @@ class YamlDataSource implements DataSourceInterface
                 $filepath
             ));
         }
-
-        // @todo more checks before requiring?
     }
 
     /**

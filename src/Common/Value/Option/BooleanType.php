@@ -38,8 +38,6 @@ class BooleanType implements OptionValueInterface
      */
     private function setValue(bool $value): void
     {
-        // @todo Add checks?
-
         $this->value = $value;
     }
 
