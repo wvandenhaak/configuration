@@ -4,6 +4,7 @@ wvandenhaak/configuration
 This package provides simple-to-use (custom)configuration files.
 
 ![PHPUnit](https://github.com/wvandenhaak/configuration/workflows/PHPUnit/badge.svg)
+[![PHP Security Checker](https://github.com/wvandenhaak/configuration/actions/workflows/security_checker.yml/badge.svg)](https://github.com/wvandenhaak/configuration/actions/workflows/security_checker.yml)
 
 Installation
 ============
