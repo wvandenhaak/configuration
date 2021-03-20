@@ -14,8 +14,6 @@ use Wvandenhaak\Configuration\Common\Contract\ReadableConfigInterface;
 class Config implements ReadableConfigInterface
 {
 
-    public const KEY = 'configuration';
-
     private array $elements;
 
     /**

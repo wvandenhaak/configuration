@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Config\Service;
 
+use Wvandenhaak\Configuration\Common\Enum\ConfigEnum;
 use Wvandenhaak\Configuration\Common\Exception\ParseException;
 use Wvandenhaak\Configuration\Config\Model\Config;
 
@@ -23,7 +24,7 @@ class Parser
      */
     public function parse(array $configArray): Config
     {
-        if (!array_key_exists(Config::KEY, $configArray)) {
+        if (!array_key_exists(ConfigEnum::KEY, $configArray)) {
             throw new ParseException(sprintf(
                 "Options are missing from the config"
             ));
@@ -33,7 +34,7 @@ class Parser
          
         // @todo Better parsing into config        
         
-        return new Config($configArray['configuration']);
+        return new Config($configArray[ConfigEnum::KEY]);
     }
 
 }

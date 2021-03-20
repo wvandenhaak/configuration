@@ -6,6 +6,7 @@ namespace Wvandenhaak\Configuration\Common\DataStore;
 
 use Symfony\Component\Yaml\Yaml;
 use Wvandenhaak\Configuration\Common\Contract\DataStoreInterface;
+use Wvandenhaak\Configuration\Common\Enum\ConfigEnum;
 use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Config\Model\Config;
 
@@ -35,7 +36,7 @@ class YamlDataStore implements DataStoreInterface
     {
         // Create file contents
         $fileContents = Yaml::dump([
-            Config::KEY => $config->getAll()
+            ConfigEnum::KEY => $config->getAll()
         ]);
 
         // Write file

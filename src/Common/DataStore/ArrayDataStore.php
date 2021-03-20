@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Common\DataStore;
 
 use Wvandenhaak\Configuration\Common\Contract\DataStoreInterface;
+use Wvandenhaak\Configuration\Common\Enum\ConfigEnum;
 use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
 use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
 use Wvandenhaak\Configuration\Common\Value\FilePathValue;
@@ -36,7 +37,7 @@ class ArrayDataStore implements DataStoreInterface
     {
         // Create file contents
         $configData = $config->getAll();
-        $data = [Config::KEY => $configData];
+        $data = [ConfigEnum::KEY => $configData];
 
         $fileContents = "<?php\n\nreturn " . var_export($data, true) . "\n\n?>";
 
