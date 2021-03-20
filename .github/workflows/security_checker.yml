@@ -1,4 +1,4 @@
-name: Local PHP Security Checker
+name: PHP Security Checker
 
 on: [push, pull_request]
 
