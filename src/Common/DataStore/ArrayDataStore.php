@@ -6,8 +6,6 @@ namespace Wvandenhaak\Configuration\Common\DataStore;
 
 use Wvandenhaak\Configuration\Common\Contract\DataStoreInterface;
 use Wvandenhaak\Configuration\Common\Enum\ConfigEnum;
-use Wvandenhaak\Configuration\Common\Value\File\FileNameValue;
-use Wvandenhaak\Configuration\Common\Value\File\FolderValue;
 use Wvandenhaak\Configuration\Common\Value\FilePathValue;
 use Wvandenhaak\Configuration\Config\Model\Config;
 
