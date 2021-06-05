@@ -1,6 +1,0 @@
-configuration:
-    key_11: value_1
-    key_22: [value_2_1, value_2_2, value_2_3, value_2_4]
-    key_33: true
-    key_44: 49
-    duplicate_key_for_merging: DEF
