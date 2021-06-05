@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Tests\Setup\Service;
 
 use PHPUnit\Framework\TestCase;
+use Wvandenhaak\Configuration\Common\Exception\ParseException;
 use Wvandenhaak\Configuration\Common\Value\Option\ArrayType;
 use Wvandenhaak\Configuration\Common\Value\Option\StringType;
 use Wvandenhaak\Configuration\Setup\Service\OptionValidator;
@@ -29,6 +30,21 @@ class OptionParserTest extends TestCase
     {
         $validatorMock = $this->createMock(OptionValidator::class);
         $this->subject = new OptionParser($validatorMock);
+    }
+
+    /**
+     * Test if an exception is throw when the array of choices is multi dimensional
+     * @return void
+     */
+    public function testThrowsParseExceptionOnArrayOfChoices(): void
+    {
+        $this->expectException(ParseException::class);
+
+        $optionsArray = [
+            ['key' => 'key_1', 'choices' => ['a', 'b' => ['c', 'd'], 'e'], 'type' => StringType::class]
+        ];
+
+        $this->subject->parse($optionsArray);
     }
 
     /**

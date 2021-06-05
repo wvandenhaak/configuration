@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wvandenhaak\Configuration\Setup\Service;
 
 use Wvandenhaak\Configuration\Common\Enum\OptionEnum;
+use Wvandenhaak\Configuration\Common\Exception\ParseException;
 use Wvandenhaak\Configuration\Common\Exception\ValidationException;
 use Wvandenhaak\Configuration\Setup\Model\Option\Option;
 use Wvandenhaak\Configuration\Setup\Model\Option\OptionCollection;
@@ -30,6 +31,7 @@ class OptionParser
      * @param array $options
      * @return OptionCollection
      * @throws ValidationException
+     * @throws ParseException
      */
     public function parse(array $options): OptionCollection
     {
@@ -56,6 +58,7 @@ class OptionParser
     /**
      * @param array $option
      * @return Option
+     * @throws ParseException
      */
     private function parseOption(array $option): Option
     {
@@ -65,7 +68,13 @@ class OptionParser
         // Get all possible choices
         $choices = [];
         if (isset($option[OptionEnum::KEY_CHOICES])) {
-            // @todo validate choices does not contain array in array
+            $optionChoices = $option[OptionEnum::KEY_CHOICES];
+
+            foreach ($optionChoices as $choice) {
+                if (is_array($choice)) {
+                    throw new ParseException('Multi-dimensional array of choices is not supported');
+                }
+            }
             $choices = $option[OptionEnum::KEY_CHOICES];
         }
 
