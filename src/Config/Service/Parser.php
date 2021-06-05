@@ -25,9 +25,7 @@ class Parser
     public function parse(array $configArray): Config
     {
         if (!array_key_exists(ConfigEnum::KEY, $configArray)) {
-            throw new ParseException(sprintf(
-                "Options are missing from the config"
-            ));
+            throw new ParseException("Options are missing from the config");
         }
         
         // @todo More parsing checks

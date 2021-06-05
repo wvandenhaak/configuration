@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wvandenhaak\Configuration\Common\Contract;
 
-use \Wvandenhaak\Configuration\Common\Contract\OptionValueInterface;
+use Wvandenhaak\Configuration\Common\Contract\OptionValueInterface;
 
 /**
  *
